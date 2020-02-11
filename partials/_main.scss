@@ -1,0 +1,315 @@
+body {
+    font-family: 'Cabin Sketch', cursive;
+    height: 100vh;
+    transition: all 1s;
+
+    .title {
+        text-align: center;
+        font-size: calc(45px + (100 - 45) * ((100vw - 320px) / (1680 - 320)));
+        margin: 0;
+        padding-top: calc(10px + (70 - 10) * ((100vw - 320px) / (1680 - 320)));
+        transition: all 0.7s;
+        height: 25vh;
+    }
+
+    
+    .gameBoard {
+        height: 78%;
+        position: relative;
+        display: none;
+        
+        .clock {
+            text-align: center;
+            font-size: 3rem;
+            justify-content: space-between;
+            height: 5%;
+            padding: 0;
+            margin-bottom: 30px;
+
+            button {
+                font-family: 'Cabin Sketch', cursive;
+                border: none;
+                font-size: 3rem;
+                padding: 0;
+                height: 100%;
+                background: none;
+            }
+        }
+
+        .container {
+            flex-wrap: wrap;
+            height: 75%;
+            justify-content: space-between;
+            align-items: space-between;
+            display: none;
+    
+            .card {
+                position: relative;
+                perspective: 700px;
+                width: 23%;
+                height: 23%;
+                transition: all 0.5s;
+                // background: white;
+    
+                &.matched {
+                    border: 5px solid pink;
+                    transform: scale(0.8);
+                    opacity: 0.8;
+                    border-radius: 50px;
+                    
+                    .front,
+                    .back {
+                        transform: scale(0.8);
+                        border-radius: 45px;
+                    }
+                }
+    
+                &.flipped .front {
+                        transform: rotateY(0deg);
+                    }
+    
+                &.flipped .back{
+                        transform: rotateY(180deg);
+                    }
+    
+                &.level2 {
+                    width: calc(100% / 5 - 5px);
+                }
+    
+                &.level3 {
+                    width: calc(100% / 6);
+                }
+    
+                .front {
+                    position: absolute;
+                    backface-visibility: hidden;
+                    transition: all 0.5s;
+                }
+                
+                .back {
+                    transform: rotateY(-180deg);
+                    //move it to .front
+                    position: absolute;
+                    backface-visibility: hidden;
+                    transition: all 0.5s;
+                }
+
+                .matchAnimation {
+                    width: 30px;
+                    height: 30px;
+                    position: absolute;
+                }
+            }
+        }
+    }
+
+    .descriptionContainer {
+
+        h2 {
+            font-size: calc(35px + (45 - 35) * ((100vw - 320px) / (1680 - 320)));
+            text-align: center;
+        }
+
+        p {
+            font-size: calc(18px + (25 - 18) * ((100vw - 320px) / (1680 - 320)));
+            line-height: 40px;
+            text-align: center;
+            margin: calc(25px + (40 - 25) * ((100vw - 320px) / (1680 - 320))) auto;
+            width: calc(275px + (750 - 275) * ((100vw - 320px) / (1680 - 320)));
+
+            @include mq-650 {
+                margin: 0 auto;
+                line-height: calc(30px + (35 - 30) * ((100vw - 320px) / (650 - 320)));
+            }
+        }
+        
+        .levelContainer {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            @include button;
+        }
+
+        .gameStart {
+            display: flex;
+            justify-content: center;
+            @include button;
+        }
+    }
+
+    .alidin {
+        position: absolute;
+        top: 0;
+        height: 60vh;
+        width: 40vw;
+        opacity: 0;
+        transition: opacity 1s;
+
+        .textMatch {
+            position: absolute;
+            font-size: 2rem;
+            top: 10%;
+            left: 70%;
+            background: white;
+            text-align: center;
+            padding: 10px 10px;
+            width: 70%;
+            opacity: 0;
+        }
+    }
+
+    .elsa {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 50vh;
+        width:30vw;
+        opacity: 0;
+        transition: opacity 1s;
+
+        .snowFlake:nth-child(odd) {
+            position: absolute;
+            width: 20%;
+            height: 13%;
+            animation: firstSnowFlake 2s ease 1;
+            z-index: 1;
+        }
+
+        .snowFlake:nth-child(even) {
+            position: absolute;
+            width: 20%;
+            height: 13%;
+            animation: secondSnowFlake 2.5s ease 1;
+            z-index: 1;
+        }
+    }
+
+    .resultContainer {
+        display: none;
+        background: white;
+        z-index: 2;
+        padding: 0;
+
+        .result {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            z-index: 2;
+            padding: 20px;
+            text-align: center;
+
+            h2 {
+                font-size: 8rem;
+                margin-top: 0;
+                z-index: 2;
+            }
+
+            .resultDescription {
+                font-size: 4rem;
+                z-index: 2;
+
+            }
+        }
+    }
+}
+
+
+@keyframes firstSnowFlake {
+    0% {
+        top: 20%;
+        left: 0;
+    }
+
+    20% {
+        top: 25%;
+        left: -40%;
+    }
+
+    40% {
+        left: -30%;
+    }
+
+    60% {
+        left: -40%
+    }
+
+    70% {
+        left: -30%;
+    }
+
+    80% {
+        left: -40%;
+    }
+
+    100% {
+        top: 30%;
+        left: -50%;
+    }
+}
+
+@keyframes secondSnowFlake {
+    0% {
+        top: 20%;
+        left: 0;
+    }
+
+    20% {
+        top: 35%;
+        left: -10%;
+    }
+
+    40% {
+        left: -20%;
+    }
+
+    60% {
+        left: -30%
+    }
+
+    70% {
+        left: -20%;
+    }
+
+    80% {
+        left: -30%;
+    }
+
+    100% {
+        top: 35%;
+        left: -50%;
+    }
+}
+
+@media(max-width: 1024px) {
+    html .wrapper {
+        width: 60%;
+    }
+}
+
+@media(max-width: 768px) {
+    html .wrapper {
+        width: 85%;
+    }
+
+    .level2CardWidth.wrapper {
+        width: 95%;
+    }
+
+    body {
+
+        .container {
+            height: 60%;
+            padding: 0;
+        }
+    }
+     
+}
+
+@media(max-width: 420px) {
+    body .container {
+        height: 50%;
+    }
+}
