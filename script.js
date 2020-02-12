@@ -131,6 +131,7 @@ memoryGame.checkCards = function() {
     let userFlippedCard = false;
     let gameOver = false;
     let numberOfMatches = 0;
+
     $('.resetButton').on('click', () => {
         location.reload();
     })
@@ -139,30 +140,45 @@ memoryGame.checkCards = function() {
         const timeChecker = () => {
             timer--;
             $('.timer').text(`TIME: ${timer}`);
-        }
-        const interval = setInterval(() => {
-            timeChecker();
-
+            
             if (timer === 0 || targettedMatches === numberOfMatches) {
                 gameOver = true;
                 $('.container').css('pointer-events', 'none');
                 clearInterval(interval);
-                
-                setTimeout(() => {
-                    $('.gameBoard').fadeOut();
 
-                    setTimeout(() => {
-                        const resultDescription = `
+                setTimeout(() => {
+                    $('.gameBoard').empty();
+
+                    const resultDescription = `
+                        <div class="result">
+                            <h2>RESULT</h2>
                             <p>You tried ${count} times and got ${numberOfMatches} matched</p>
-                        `;
-                        $('.resultDescription').append(resultDescription);
-                        $('.resultContainer').css('display', 'flex');
-                        $('.textMatch').text('YOU ARE THE BEST!!');
-                    }, 1000)
-                },1500)
+                            <button class="playAgain">PLAY AGAIN</button>
+                        </div>
+                    `;
+
+                    $('.gameBoard').append(resultDescription);
+                    $('.textMatch').text('YOU ARE THE BEST!!');
+                    $('.playAgain').on('click', () => {
+                        location.reload();
+                    })
+                }, 2500)
             }
+        }
+
+        let lessThan15Seconds = false;
+        $('.bonusTime').one('click', () => {
+            lessThan15Seconds = true;
+            if(timer < 15 && lessThan15Seconds) {
+                timer += 10;
+            }
+        })
+
+        const interval = setInterval(() => {
+            timeChecker();
         }, 1000);
     })
+
 
     $('.card').on('click', function() {
         if(!gameOver) {

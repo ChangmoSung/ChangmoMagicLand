@@ -12,20 +12,20 @@
 
 @mixin button () {
     button {
-    font-family: 'Cabin Sketch', cursive;
-    font-size: 2.5rem;
-    border: none;
-    padding: 20px 8%;
-    border-radius: 50px;
-    margin-top: 50px;
-    box-shadow: 0 10px 0 blue;
-    transition: all 0.5s;
-    
-    &:focus,
-    &:active,
-    &:hover {
-        transform: translateY(5px);
-        box-shadow: 0 5px blue;
+        font-family: 'Cabin Sketch', cursive;
+        font-size: 2.5rem;
+        border: none;
+        padding: 12px 5%;
+        border-radius: 50px;
+        margin-top: 50px;
+        box-shadow: 8px 8px 0 blue;
+        transition: all 0.5s;
+
+        &:focus,
+        &:active,
+        &:hover {
+            transform: translate(4px, 4px);
+            box-shadow: 4px 4px blue;
+        }
     }
-}
 }

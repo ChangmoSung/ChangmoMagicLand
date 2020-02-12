@@ -2,34 +2,35 @@ body {
     font-family: 'Cabin Sketch', cursive;
     height: 100vh;
     transition: all 1s;
-
+    // background-image: url(../assets/disneycastleBackground.gif);
+    background-size: 100% 100%;
+    
     .title {
         text-align: center;
-        font-size: calc(45px + (100 - 45) * ((100vw - 320px) / (1680 - 320)));
+        font-size: calc(55px + (100 - 55) * ((100vw - 320px) / (1680 - 320)));
         margin: 0;
-        padding-top: calc(10px + (70 - 10) * ((100vw - 320px) / (1680 - 320)));
+        padding-top: calc(10px + (60 - 10) * ((100vw - 320px) / (1680 - 320)));
         transition: all 0.7s;
-        height: 25vh;
+        height: 23%;
     }
 
     
     .gameBoard {
-        height: 78%;
+        height: 77%;
         position: relative;
         display: none;
         
         .clock {
             text-align: center;
-            font-size: 3rem;
+            font-size: 3.5rem;
             justify-content: space-between;
-            height: 5%;
             padding: 0;
             margin-bottom: 30px;
 
             button {
                 font-family: 'Cabin Sketch', cursive;
                 border: none;
-                font-size: 3rem;
+                font-size: 3.5rem;
                 padding: 0;
                 height: 100%;
                 background: none;
@@ -42,6 +43,8 @@ body {
             justify-content: space-between;
             align-items: space-between;
             display: none;
+            padding: 1.5%;
+            background: rgba(188,80,139,0.3);
     
             .card {
                 position: relative;
@@ -49,17 +52,15 @@ body {
                 width: 23%;
                 height: 23%;
                 transition: all 0.5s;
-                // background: white;
     
                 &.matched {
-                    border: 5px solid pink;
-                    transform: scale(0.8);
-                    opacity: 0.8;
+                    transform: scale(0.5);
+                    opacity: 0.7;
                     border-radius: 50px;
                     
                     .front,
                     .back {
-                        transform: scale(0.8);
+                        // transform: scale(0.8);
                         border-radius: 45px;
                     }
                 }
@@ -127,6 +128,8 @@ body {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
+            margin: 0 auto;
+            width: 80%;
             @include button;
         }
 
@@ -140,30 +143,32 @@ body {
     .alidin {
         position: absolute;
         top: 0;
-        height: 60vh;
+        height: 55vh;
         width: 40vw;
         opacity: 0;
         transition: opacity 1s;
 
-        .textMatch {
-            position: absolute;
-            font-size: 2rem;
-            top: 10%;
-            left: 70%;
-            background: white;
-            text-align: center;
-            padding: 10px 10px;
-            width: 70%;
-            opacity: 0;
-        }
+    }
+
+    .textMatch {
+        background: skyblue;
+        position: absolute;
+        font-size: 2rem;
+        top: 15%;
+        left: 26%;
+        text-align: center;
+        padding: 10px;
+        opacity: 0;
+        color: blue;
+        margin: 0;
     }
 
     .elsa {
         position: absolute;
         top: 0;
         right: 0;
-        height: 50vh;
-        width:30vw;
+        height: 55vh;
+        width:40vw;
         opacity: 0;
         transition: opacity 1s;
 
@@ -184,80 +189,273 @@ body {
         }
     }
 
-    .resultContainer {
-        display: none;
-        background: white;
+    .mickeyMouse {
+        position: absolute;
+        bottom: 30%;
+        left: 20%;
+        width: 30%;
+        height: 30%;
+        animation: mickeyMouse 30s ease infinite;
+        z-index: -1;
+    }
+
+        
+    .result {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: rgba(188,80,139,0.3);
         z-index: 2;
         padding: 0;
+        width: 100vw;
+        height: 50vh;
+        text-align: center;
 
-        .result {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            background: white;
+        h2 {
+            font-size: 14rem;
+            margin: 0 0 30px;
             z-index: 2;
-            padding: 20px;
-            text-align: center;
+        }
 
-            h2 {
-                font-size: 8rem;
-                margin-top: 0;
-                z-index: 2;
-            }
+        p {
+            font-size: 4rem;
+            z-index: 2;
+        }
 
-            .resultDescription {
-                font-size: 4rem;
-                z-index: 2;
+        .playAgain {
+            @include button;
+        }
+    }
+}
 
+
+@media(max-width: 1024px) {
+    html .wrapper {
+        width: 60%;
+    }
+
+    body .descriptionContainer .levelContainer {
+        width: 100%;
+    }
+}
+
+@media(max-width: 768px) {
+    html .wrapper {
+        width: 70%;
+    }
+
+    body {
+
+        .title {
+            height: 22%;
+        }
+
+        .gameBoard {
+            height: 70%;
+    
+            .clock {
+                font-size: 2.5rem;
+    
+                button {
+                    font-size: 2.5rem;
+                }
             }
         }
+
+        .descriptionContainer {
+
+            .wrapper {
+                padding: 0;
+
+                p {
+                    line-height: 30px;
+                    width: 100%;
+                }
+    
+                .levelContainer {
+                    flex-direction: column;
+                    width: 35%;
+
+                    button {
+                        margin-top: 30px;
+                    }
+                }
+            }
+
+        }
+
+        .textMatch {
+            top: 18%;
+            font-size: 1.6rem;
+            left: 15%;
+            padding: 5px;
+        }
+
+        .alidin,
+        .elsa {
+            height: 45vh;
+        }
+
+        .result {
+            height: 50vh;
+
+            h2 {
+                font-size: 10rem;
+            }
+        }
+    }
+}
+
+@media(max-width: 420px) {
+    html .wrapper {
+        width: 85%;
+    }
+
+    body {
+        .gameBoard .clock {
+            font-size: 2.2rem;
+    
+            button {
+                font-size: 2.2rem;
+            }
+        }
+
+        .result {
+            padding: 15px;
+
+             h2 {
+                 font-size: 8rem;
+             }
+
+             p {
+                 font-size: 3rem;
+             }
+        }
+    }
+}
+
+
+@keyframes mickeyMouse {
+    0% {
+        bottom: 35%;
+        left: 25%;
+    }
+
+    5% {
+        bottom: 32.5%;
+        left: 22.5%;
+    }
+    10% {
+        bottom: 30%;
+        left: 20%;
+    }
+
+    15% {
+        bottom: 27.5%;
+        left: 17.5%;
+    }
+
+    20% {
+        bottom: 25%;
+        left: 15%;
+    }
+    25% {
+        bottom: 22.5%;
+        left: 12.5%;
+    }
+    30% {
+        bottom: 20%;
+        left: 10%;
+    }
+    35% {
+        left: 12.5%;
+    }
+    40% {
+        left: 15%;
+    }
+    50% {
+        left: 17.5%;
+    }
+    55% {
+        left: 20%;
+    }
+    60% {
+        left: 22.5%;
+    }
+    65% {
+        left: 25%;
+    }
+    70% {
+        bottom: 22.5%;
+        left: 27.5%;
+    }
+    75% {
+        bottom: 25%;
+        left: 30%;
+    }
+    80% {
+        bottom: 27.5%;
+        left: 32.5%;
+    }
+    85% {
+        bottom: 30%;
+        left: 35%;
+    }
+    90% {
+        left: 37.5%;
+    }
+    95% {
+        left: 40%;
+    }
+    100% {
+        bottom: 32.5%;
     }
 }
 
 
 @keyframes firstSnowFlake {
     0% {
-        top: 20%;
+        top: 15%;
         left: 0;
     }
 
     20% {
-        top: 25%;
-        left: -40%;
+        top: 20%;
+        left: -20%;
     }
 
     40% {
-        left: -30%;
+        left: -10%;
     }
 
     60% {
-        left: -40%
+        left: -20%
     }
 
     70% {
-        left: -30%;
+        left: -10%;
     }
 
     80% {
-        left: -40%;
+        left: -20%;
     }
 
     100% {
-        top: 30%;
-        left: -50%;
+        top: 15%;
+        left: -30%;
     }
 }
 
+
 @keyframes secondSnowFlake {
     0% {
-        top: 20%;
+        top: 15%;
         left: 0;
     }
 
     20% {
-        top: 35%;
+        top: 30%;
         left: -10%;
     }
 
@@ -279,37 +477,6 @@ body {
 
     100% {
         top: 35%;
-        left: -50%;
-    }
-}
-
-@media(max-width: 1024px) {
-    html .wrapper {
-        width: 60%;
-    }
-}
-
-@media(max-width: 768px) {
-    html .wrapper {
-        width: 85%;
-    }
-
-    .level2CardWidth.wrapper {
-        width: 95%;
-    }
-
-    body {
-
-        .container {
-            height: 60%;
-            padding: 0;
-        }
-    }
-     
-}
-
-@media(max-width: 420px) {
-    body .container {
-        height: 50%;
+        left: -40%;
     }
 }
