@@ -248,6 +248,8 @@ body {
   font-family: "Cabin Sketch", cursive;
   height: 100vh;
   transition: all 1s;
+  background-image: url(../assets/pexels-photo-1831234.jpeg);
+  background-size: 100% 100%;
 }
 body .title {
   text-align: center;
@@ -256,6 +258,71 @@ body .title {
   padding-top: calc(10px + (60 - 10) * ((100vw - 320px) / (1680 - 320)));
   transition: all 0.7s;
   height: 23%;
+  color: blue;
+}
+body .descriptionContainer {
+  color: blue;
+}
+body .descriptionContainer h2 {
+  font-size: calc(33px + (60 - 33) * ((100vw - 320px) / (1680 - 320)));
+  text-align: center;
+}
+body .descriptionContainer p {
+  font-size: calc(16px + (25 - 16) * ((100vw - 320px) / (1680 - 320)));
+  line-height: 35px;
+  text-align: center;
+  margin: calc(25px + (40 - 25) * ((100vw - 320px) / (1680 - 320))) auto;
+  width: 100%;
+  margin-bottom: 0;
+  height: 15vh;
+}
+@media (max-width: 650px) {
+  body .descriptionContainer p {
+    margin: 0 auto;
+    line-height: calc(30px + (35 - 30) * ((100vw - 320px) / (650 - 320)));
+  }
+}
+body .descriptionContainer .levelContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin: 50px auto 0;
+}
+body .descriptionContainer .levelContainer button {
+  font-family: "Cabin Sketch", cursive;
+  font-size: 2.5rem;
+  border: none;
+  padding: 12px 6%;
+  border-radius: 50px;
+  margin: 0 0 30px;
+  box-shadow: 5px 5px 0 blue;
+  transition: all 0.5s;
+  background: white;
+}
+body .descriptionContainer .levelContainer button:focus, body .descriptionContainer .levelContainer button:active, body .descriptionContainer .levelContainer button:hover {
+  transform: translate(2.5px, 2.5px);
+  box-shadow: 2.5px 2.5px blue;
+}
+body .descriptionContainer .gameStart {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 100px;
+}
+body .descriptionContainer .gameStart button {
+  font-family: "Cabin Sketch", cursive;
+  font-size: 2.5rem;
+  border: none;
+  padding: 12px 5%;
+  border-radius: 50px;
+  box-shadow: 5px 5px 0 blue;
+  transition: all 0.5s;
+  width: 40%;
+  margin-top: 25px;
+  background: white;
+}
+body .descriptionContainer .gameStart button:focus, body .descriptionContainer .gameStart button:active, body .descriptionContainer .gameStart button:hover {
+  transform: translate(2.5px, 2.5px);
+  box-shadow: 2.5px 2.5px blue;
 }
 body .gameBoard {
   height: 77%;
@@ -266,16 +333,30 @@ body .gameBoard .clock {
   text-align: center;
   font-size: 3.3rem;
   justify-content: space-between;
+  align-items: center;
   padding: 0;
   margin-bottom: 30px;
+}
+body .gameBoard .clock .count,
+body .gameBoard .clock .timer {
+  margin: 0;
+  background: white;
+  border-radius: 50px;
+  padding: 0.3% 1%;
 }
 body .gameBoard .clock button {
   font-family: "Cabin Sketch", cursive;
   border: none;
   font-size: 3.3rem;
-  padding: 0;
   height: 100%;
-  background: none;
+  border-radius: 50px;
+  padding: 0.3% 1%;
+  box-shadow: 5px 5px 0 blue;
+  background: white;
+}
+body .gameBoard .clock button:focus, body .gameBoard .clock button:active, body .gameBoard .clock button:hover {
+  transform: translate(2.5px, 2.5px);
+  box-shadow: 2.5px 2.5px blue;
 }
 body .gameBoard .clock .bonusTime {
   opacity: 0;
@@ -288,7 +369,7 @@ body .gameBoard .container {
   align-items: space-between;
   display: none;
   padding: 1.5%;
-  background: rgba(188, 80, 139, 0.2);
+  background: rgba(98, 162, 224, 0.5);
 }
 body .gameBoard .container .card {
   position: relative;
@@ -335,7 +416,7 @@ body .gameBoard .result {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(188, 80, 139, 0.3);
+  background: rgba(98, 162, 224, 0.5);
   z-index: 2;
   padding: 0;
   width: 100vw;
@@ -359,83 +440,40 @@ body .gameBoard .result .playAgain {
   border-radius: 50px;
   box-shadow: 8px 8px 0 blue;
   transition: all 0.5s;
+  background: white;
+  margin-bottom: 50px;
 }
 body .gameBoard .result .playAgain:focus, body .gameBoard .result .playAgain:active, body .gameBoard .result .playAgain:hover {
   transform: translate(4px, 4px);
   box-shadow: 4px 4px blue;
 }
-body .descriptionContainer h2 {
-  font-size: calc(33px + (60 - 33) * ((100vw - 320px) / (1680 - 320)));
-  text-align: center;
+body .mickey {
+  position: absolute;
+  bottom: 0;
+  height: 40vh;
+  width: 30vw;
 }
-body .descriptionContainer p {
-  font-size: calc(16px + (25 - 16) * ((100vw - 320px) / (1680 - 320)));
-  line-height: 35px;
-  text-align: center;
-  margin: calc(25px + (40 - 25) * ((100vw - 320px) / (1680 - 320))) auto;
-  width: 100%;
-  margin-bottom: 0;
-  height: 15vh;
-}
-@media (max-width: 650px) {
-  body .descriptionContainer p {
-    margin: 0 auto;
-    line-height: calc(30px + (35 - 30) * ((100vw - 320px) / (650 - 320)));
-  }
-}
-body .descriptionContainer .levelContainer {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 50px auto 0;
-}
-body .descriptionContainer .levelContainer button {
-  font-family: "Cabin Sketch", cursive;
-  font-size: 2.5rem;
-  border: none;
-  padding: 12px 6%;
-  border-radius: 50px;
-  margin: 0 0 30px;
-  box-shadow: 5px 5px 0 blue;
-  transition: all 0.5s;
-}
-body .descriptionContainer .levelContainer button:focus, body .descriptionContainer .levelContainer button:active, body .descriptionContainer .levelContainer button:hover {
-  transform: translate(2.5px, 2.5px);
-  box-shadow: 2.5px 2.5px blue;
-}
-body .descriptionContainer .gameStart {
-  display: flex;
-  justify-content: center;
-}
-body .descriptionContainer .gameStart button {
-  font-family: "Cabin Sketch", cursive;
-  font-size: 2.5rem;
-  border: none;
-  padding: 12px 5%;
-  border-radius: 50px;
-  box-shadow: 5px 5px 0 blue;
-  transition: all 0.5s;
-  width: 40%;
-  margin-top: 25px;
-}
-body .descriptionContainer .gameStart button:focus, body .descriptionContainer .gameStart button:active, body .descriptionContainer .gameStart button:hover {
-  transform: translate(2.5px, 2.5px);
-  box-shadow: 2.5px 2.5px blue;
+body .minnie {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  height: 40vh;
+  width: 30vw;
 }
 body .alidin {
   position: absolute;
   top: 0;
-  height: 55vh;
+  height: 50vh;
   width: 40vw;
   opacity: 0;
   transition: opacity 1s;
 }
 body .textMatch {
-  background: skyblue;
+  background: rgba(98, 162, 224, 0.5);
   position: absolute;
   font-size: 2rem;
   top: 15%;
-  left: 26%;
+  left: 30%;
   text-align: center;
   padding: 10px;
   opacity: 0;
@@ -446,7 +484,7 @@ body .elsa {
   position: absolute;
   top: 0;
   right: 0;
-  height: 55vh;
+  height: 46vh;
   width: 40vw;
   opacity: 0;
   transition: opacity 1s;
@@ -465,21 +503,20 @@ body .elsa .snowFlake:nth-child(even) {
   animation: secondSnowFlake 2.5s ease 1;
   z-index: 1;
 }
-body .mickeyMouse {
-  position: absolute;
-  bottom: 30%;
-  left: 20%;
-  width: 30%;
-  height: 30%;
-  animation: mickeyMouse 30s ease infinite;
-  z-index: -1;
-}
 
 @media (max-width: 1024px) {
   html .wrapper {
-    width: 60%;
+    width: 65%;
   }
 
+  body .gameBoard .clock .timer,
+body .gameBoard .clock .count {
+    padding: 5px;
+  }
+  body .gameBoard .clock button {
+    font-size: 3rem;
+    padding: 5px;
+  }
   body .descriptionContainer .levelContainer {
     width: 100%;
   }
@@ -492,18 +529,6 @@ body .mickeyMouse {
   body .title {
     height: 22%;
   }
-  body .gameBoard {
-    height: 70%;
-  }
-  body .gameBoard .clock {
-    font-size: 2.5rem;
-  }
-  body .gameBoard .clock button {
-    font-size: 2.5rem;
-  }
-  body .gameBoard .result h2 {
-    font-size: 11rem;
-  }
   body .descriptionContainer .wrapper {
     padding: 0;
   }
@@ -515,6 +540,18 @@ body .mickeyMouse {
     flex-direction: column;
     width: 30%;
     margin-top: 0;
+  }
+  body .gameBoard {
+    height: 70%;
+  }
+  body .gameBoard .clock {
+    font-size: 2.5rem;
+  }
+  body .gameBoard .clock button {
+    font-size: 2.5rem;
+  }
+  body .gameBoard .result h2 {
+    font-size: 11rem;
   }
   body .textMatch {
     top: 18%;
@@ -534,10 +571,10 @@ body .elsa {
   }
 
   body .gameBoard .clock {
-    font-size: 2.1rem;
+    font-size: 2rem;
   }
   body .gameBoard .clock button {
-    font-size: 2.1rem;
+    font-size: 2rem;
   }
   body .gameBoard .result {
     padding: 15px;
@@ -637,33 +674,7 @@ body .elsa {
 }
 @keyframes firstSnowFlake {
   0% {
-    top: 15%;
-    left: 0;
-  }
-  20% {
-    top: 20%;
-    left: -20%;
-  }
-  40% {
-    left: -10%;
-  }
-  60% {
-    left: -20%;
-  }
-  70% {
-    left: -10%;
-  }
-  80% {
-    left: -20%;
-  }
-  100% {
-    top: 15%;
-    left: -30%;
-  }
-}
-@keyframes secondSnowFlake {
-  0% {
-    top: 15%;
+    top: 35%;
     left: 0;
   }
   20% {
@@ -671,19 +682,45 @@ body .elsa {
     left: -10%;
   }
   40% {
-    left: -20%;
+    left: -5%;
   }
   60% {
-    left: -30%;
+    left: -10%;
   }
   70% {
-    left: -20%;
+    left: -5%;
   }
   80% {
-    left: -30%;
+    left: -15%;
   }
   100% {
+    top: 0;
+    left: -10%;
+  }
+}
+@keyframes secondSnowFlake {
+  0% {
     top: 35%;
-    left: -40%;
+    left: 0;
+  }
+  20% {
+    top: 30%;
+    left: 10%;
+  }
+  40% {
+    left: 20%;
+  }
+  60% {
+    left: 15%;
+  }
+  70% {
+    left: 20%;
+  }
+  80% {
+    left: 10%;
+  }
+  100% {
+    top: 5%;
+    left: 20%;
   }
 }

@@ -123,6 +123,7 @@ let cards = [
         id: 'coco'
     }
 ];
+//readout aria in javascript
 
 
 memoryGame.checkCards = function() {
@@ -162,7 +163,7 @@ memoryGame.checkCards = function() {
                     const resultDescription = `
                         <div class="result">
                             <h2>RESULT</h2>
-                            <p>You tried ${count} times and got ${numberOfMatches} matched</p>
+                            <p>You tried ${count} times and brought ${numberOfMatches} friends back home!!</p>
                             <button class="playAgain">PLAY AGAIN</button>
                         </div>
                     `;
@@ -243,7 +244,7 @@ memoryGame.checkCards = function() {
                             // snow flake effect for when the cards match.
                             const snowFlakeDiv = $('<div>').addClass('snowFlake');
                             const snowImg = new Image();
-                            snowImg.src = 'assets/unnamed.png';
+                            snowImg.src = 'assets/snowFlake.png';
                             snowFlakeDiv.append(snowImg);
                             $('.elsa').append(snowFlakeDiv);
 
@@ -254,9 +255,7 @@ memoryGame.checkCards = function() {
 
 
                             // the snow flake effect fades out after 1.5 seconds.
-                            setTimeout(() => {  
-                                snowFlakeDiv.fadeOut('fast');
-                            },1500)
+                            snowFlakeDiv.delay(1500).fadeOut('fast');
                         }
                     })
 
@@ -283,12 +282,12 @@ memoryGame.checkCards = function() {
 };
 
 
-// Show all the cards on the game board based on the level that users selected. level3 and level2 have the same number of cards but different amount of time so I used the amount of time to distinguish what level users selected and for level 1, it has neither 30 seconds nor 20 cards so it belongs to the else. 
+// Show all the cards on the game board based on the level that users selected. level3 and level2 have the same number of cards but different amount of time so I used the amount of time to distinguish what level users selected and for level 1, it has neither 40 seconds nor 20 cards so it belongs to the else. 
 memoryGame.getCards = function() {
     cards.forEach(card => {
         const cardContainer = $('<div>');
     
-        if(timer === '30') {
+        if(timer === '40') {
             cardContainer.addClass('card level3')
                          .attr('id', `${card.id}`);
 
@@ -305,7 +304,7 @@ memoryGame.getCards = function() {
                                    .attr('src', `${card.url}`);
 
         const backImg = $('<img>').addClass('back')
-                                  .attr('src', 'assets/disney-castle.png');
+            .attr('src', 'assets/233345_disney-castle-png.jpeg');
 
         cardContainer.append(frontImg, backImg);
 
@@ -357,14 +356,13 @@ let timer;
 let targettedMatches = 0;
 
 memoryGame.init = function() {
-    const level1 = $('.level1');
-    const level2 = $('.level2');
-    const level3 = $('.level3');
+    let level1 = $('.level1');
+    let level2 = $('.level2');
+    let level3 = $('.level3');
     let levelSelected = false;
 
-    level1.on('click', function() {
+    $('.level').on('click', function () {
         levelSelected = true;
-        targettedMatches = 8;
 
         if (levelSelected) {
             const numberOfLevel1Cards = $(this).attr('data-cardNumber');
@@ -374,74 +372,41 @@ memoryGame.init = function() {
             cards = level1Cards;
             timer = level1Time;
 
-            level1
-                .css('pointer-events', 'none');
-
-            level2
-                .css('opacity', '0')
-                .css('pointer-events', 'none');
-
-            level3
-                .css('opacity', '0')
-                .css('pointer-events', 'none');
-
-            memoryGame.prepareToStart();
-        };
-    });
-
-    level2.on('click', function () {
-        levelSelected = true;
-        targettedMatches = 10;
-
-        if (levelSelected) {
-            const numberOfLevel2Cards = $(this).attr('data-cardNumber');
-            const level2Cards = cards.slice(0, numberOfLevel2Cards);
-            const level2Time = $(this).attr('data-time');
-
-            cards = level2Cards;
-            timer = level2Time;
-
-            level1
-                .css('opacity', '0')
-                .css('pointer-events', 'none');
-
-            level2
-                .css('pointer-events', 'none');
-
-            level3
-                .css('opacity', '0')
-                .css('pointer-events', 'none');
+            if (timer === '40' && cards.length === 20) {
+                targettedMatches = 10;
+                level3
+                    .css('pointer-events', 'none');
+                level2
+                    .css('opacity', '0')
+                    .css('pointer-events', 'none');
+                level1
+                    .css('opacity', '0')
+                    .css('pointer-events', 'none');
+            } else if (timer === '50' && cards.length === 20) {
+                targettedMatches = 10;
+                level3
+                    .css('pointer-events', 'none')
+                    .css('opacity', '0');
+                level2
+                    .css('pointer-events', 'none');
+                level1
+                    .css('opacity', '0')
+                    .css('pointer-events', 'none');
+            } else {
+                targettedMatches = 8;
+                level3
+                    .css('pointer-events', 'none')
+                    .css('opacity', '0');
+                level2
+                    .css('opacity', '0')
+                    .css('pointer-events', 'none');
+                level1
+                    .css('pointer-events', 'none');
+            }
 
             memoryGame.prepareToStart();
         };
-    });
-
-    level3.on('click', function () {
-        levelSelected = true;
-        targettedMatches = 10;
-
-        if(levelSelected) {
-            const numberOfLevel3Cards = $(this).attr('data-cardNumber');
-            const level3Cards = cards.slice(0, numberOfLevel3Cards);
-            const level3Time = $(this).attr('data-time');
-            
-            cards = level3Cards;
-            timer = level3Time;
-
-            level1
-                .css('opacity', '0')
-                .css('pointer-events', 'none');
-
-            level2
-                .css('opacity', '0')
-                .css('pointer-events', 'none');
-
-            level3
-                .css('pointer-events', 'none');
-
-            memoryGame.prepareToStart();
-        };
-    });
+    })
 
 
     // to prevent users from starting the game without choosing a level.
