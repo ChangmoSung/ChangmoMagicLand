@@ -18,14 +18,27 @@
         }
     }
 }
-@mixin mq768 {
-    @media(max-media: 768px) {
+
+@mixin mq-1024 {
+    @media(max-width: 1024px) {
+        @content;
+    }
+}
+
+@mixin mq-768 {
+    @media(max-width: 768px) {
         @content;
     }
 }
 
 @mixin mq-650 {
     @media(max-width: 650px) {
+        @content;
+    }
+}
+
+@mixin mq-420 {
+    @media(max-width: 420px) {
         @content;
     }
 }

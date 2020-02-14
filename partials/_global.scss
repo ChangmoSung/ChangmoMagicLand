@@ -6,6 +6,18 @@ html {
         padding: 0 30px;
         margin: 0 auto;
         width: 50%;
+
+        @include mq-1024 {
+            width: 65%;
+        }
+
+        @include mq-768 {
+            width: 75%;
+        }
+
+        @include mq-420 {
+            width: 85%;
+        }
     }
 
     img {

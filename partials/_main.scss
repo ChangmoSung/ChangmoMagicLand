@@ -2,7 +2,7 @@ body {
     font-family: 'Cabin Sketch', cursive;
     height: 100vh;
     transition: all 1s;
-    background-image: url(../assets/pexels-photo-1831234.jpeg);
+    background-image: url(../assets/background.jpeg);
     background-size: 100% 100%;
 
     .title {
@@ -13,61 +13,87 @@ body {
         transition: all 0.7s;
         height: 23%;
         color: blue;
+
+        @include mq-768 {
+            height: 22%;
+        }
     }
 
     .descriptionContainer {
         color: blue;
-
-        h2 {
-            font-size: calc(33px + (60 - 33) * ((100vw - 320px) / (1680 - 320)));
-            text-align: center;
-        }
-
-        p {
-            font-size: calc(16px + (25 - 16) * ((100vw - 320px) / (1680 - 320)));
-            line-height: 35px;
-            text-align: center;
-            margin: calc(25px + (40 - 25) * ((100vw - 320px) / (1680 - 320))) auto;
-            width: 100%;
-            margin-bottom: 0;
-            height: 15vh;
-
-            @include mq-650 {
-                margin: 0 auto;
-                line-height: calc(30px + (35 - 30) * ((100vw - 320px) / (650 - 320)));
-            }
-        }
         
-        .levelContainer {
-            display: flex;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            margin: 50px auto 0;
-            @include button;
-        }
+        .wrapper {
 
-        .gameStart {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 100px;
+            @include mq-768 {
+                padding: 0;
+            }
 
-            button {
-                font-family: 'Cabin Sketch', cursive;
-                font-size: 2.5rem;
-                border: none;
-                padding: 12px 5%;
-                border-radius: 50px;
-                box-shadow: 5px 5px 0 blue;
-                transition: all 0.5s;
-                width: 40%;
-                margin-top: 25px;
-                background: white;
+            h2 {
+                font-size: calc(33px + (60 - 33) * ((100vw - 320px) / (1680 - 320)));
+                text-align: center;
+            }
 
-                &:focus,
-                &:active,
-                &:hover {
-                    transform: translate(2.5px, 2.5px);
-                    box-shadow: 2.5px 2.5px blue;
+            p {
+                font-size: calc(16px + (25 - 16) * ((100vw - 320px) / (1680 - 320)));
+                line-height: 35px;
+                text-align: center;
+                margin: calc(25px + (40 - 25) * ((100vw - 320px) / (1680 - 320))) auto;
+                width: 100%;
+                margin-bottom: 0;
+                height: 15vh;
+
+                @include mq-768 {
+                    line-height: 30px;
+                    width: 100%;
+                }
+
+                @include mq-650 {
+                    margin: 0 auto;
+                    line-height: calc(30px + (35 - 30) * ((100vw - 320px) / (650 - 320)));
+                }
+            }
+            
+            .levelContainer {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                margin: 50px auto 0;
+                @include button;
+    
+                @include mq-1024 {
+                    width: 100%;
+                }
+                
+                @include mq-768 {
+                    flex-direction: column;
+                    width: 30%;
+                    margin-top: 0;
+                }
+            }
+
+            .gameStart {
+                display: flex;
+                justify-content: center;
+                margin-bottom: 100px;
+
+                button {
+                    font-family: 'Cabin Sketch', cursive;
+                    font-size: 2.5rem;
+                    border: none;
+                    padding: 12px 5%;
+                    border-radius: 50px;
+                    box-shadow: 5px 5px 0 blue;
+                    transition: all 0.5s;
+                    width: 40%;
+                    margin-top: 25px;
+                    background: white;
+
+                    &:focus,
+                    &:active,
+                    &:hover {
+                        transform: translate(2.5px, 2.5px);
+                        box-shadow: 2.5px 2.5px blue;
+                    }
                 }
             }
         }
@@ -77,6 +103,10 @@ body {
         height: 77%;
         position: relative;
         display: none;
+
+        @include mq-768 {
+            height: 70%;
+        }
         
         .clock {
             text-align: center;
@@ -86,12 +116,24 @@ body {
             padding: 0;
             margin-bottom: 30px;
 
+            @include mq-768 {
+                font-size: 2.5rem;
+            }
+
+            @include mq-420 {
+                font-size: 2rem;
+            }
+
             .count,
             .timer {
                 margin: 0;
                 background: white;
                 border-radius: 50px;
                 padding: 0.3% 1%;
+
+                @include mq-1024 {
+                    padding: 5px;
+                }
             }
 
             button {
@@ -109,6 +151,19 @@ body {
                 &:hover {
                     transform: translate(2.5px, 2.5px);
                     box-shadow: 2.5px 2.5px blue;
+                }
+
+                @include mq-1024 {
+                    font-size: 3rem;
+                    padding: 5px;
+                }
+
+                @include mq-768 {
+                    font-size: 2.5rem;
+                }
+
+                @include mq-420 {
+                    font-size: 2rem;
                 }
             }
 
@@ -158,11 +213,10 @@ body {
                     position: absolute;
                     backface-visibility: hidden;
                     transition: all 0.5s;
+                    transform: rotateY(-180deg);
                 }
                 
                 .back {
-                    transform: rotateY(-180deg);
-                    //move it to .front
                     position: absolute;
                     backface-visibility: hidden;
                     transition: all 0.5s;
@@ -188,15 +242,32 @@ body {
             height: 50vh;
             text-align: center;
 
+            @include mq-420 {
+                padding: 15px;
+            }
+
             h2 {
                 font-size: 14rem;
                 margin: 0 0 30px;
                 z-index: 2;
+
+                @include mq-768 {
+                    font-size: 11rem;
+                    margin-bottom: 0;
+                }
+
+                @include mq-420 {
+                    font-size: 8rem;
+                }
             }
 
             p {
                 font-size: 4rem;
                 z-index: 2;
+
+                @include mq-420 {
+                    font-size: 3rem;
+                }
             }
 
             .playAgain {
@@ -242,6 +313,15 @@ body {
         width: 40vw;
         opacity: 0;
         transition: opacity 1s;
+
+        @include mq-768 {
+            height: 45vh;
+            width: 45vw;
+        }
+
+        @include mq-420 {
+            width: 50vw;
+        }
     }
 
     .textMatch {
@@ -255,6 +335,13 @@ body {
         opacity: 0;
         color: blue;
         margin: 0;
+
+        @include mq-768 {
+            top: 18%;
+            font-size: 1.6rem;
+            left: 15%;
+            padding: 5px;
+        }
     }
 
     .elsa {
@@ -281,217 +368,15 @@ body {
             animation: secondSnowFlake 2.5s ease 1;
             z-index: 1;
         }
-    }
-}
 
-
-@media(max-width: 1024px) {
-    html .wrapper {
-        width: 65%;
-    }
-    body {
-
-        .gameBoard .clock {
-            
-            .timer,
-            .count {
-                padding: 5px;
-            }
-
-            button {
-                font-size: 3rem;
-                padding: 5px;
-            }
-        }
-
-        .descriptionContainer .levelContainer {
-            width: 100%;
-        }
-    }
-}
-
-@media(max-width: 768px) {
-    html .wrapper {
-        width: 70%;
-    }
-
-    body {
-
-        .title {
-            height: 22%;
-        }
-
-        .descriptionContainer {
-
-            .wrapper {
-                padding: 0;
-
-                p {
-                    line-height: 30px;
-                    width: 100%;
-                }
-    
-                .levelContainer {
-                    flex-direction: column;
-                    width: 30%;
-                    margin-top: 0;
-                }
-            }
-        }
-
-        .gameBoard {
-            height: 70%;
-    
-            .clock {
-                font-size: 2.5rem;
-    
-                button {
-                    font-size: 2.5rem;
-                }
-            }
-
-            .result h2 {
-                font-size: 11rem;
-            }
-        }
-
-        .textMatch {
-            top: 18%;
-            font-size: 1.6rem;
-            left: 15%;
-            padding: 5px;
-        }
-
-        .alidin,
-        .elsa {
+        @include mq-768 {
             height: 45vh;
             width: 45vw;
         }
-    }
-}
 
-@media(max-width: 420px) {
-    html .wrapper {
-        width: 85%;
-    }
-
-    body {
-
-        .gameBoard .clock {
-            font-size: 2rem;
-    
-            button {
-                font-size: 2rem;
-            }
-        }
-        
-        .gameBoard .result {
-            padding: 15px;
-
-            h2 {
-                font-size: 8rem;
-            }
-
-            p {
-                font-size: 3rem;
-            }
-        }
-
-        .descriptionContainer .wrapper {
-
-            margin-bottom: 100px;
-
-            h2 {
-                margin-top: 0;
-            }
-
-            .levelContainer {
-                width: 55%;
-            }
-        }
-
-        .alidin,
-        .elsa {
+        @include mq-420 {
             width: 50vw;
         }
-    }
-}
-
-
-@keyframes mickeyMouse {
-    0% {
-        bottom: 35%;
-        left: 25%;
-    }
-
-    5% {
-        bottom: 32.5%;
-        left: 22.5%;
-    }
-    10% {
-        bottom: 30%;
-        left: 20%;
-    }
-
-    15% {
-        bottom: 27.5%;
-        left: 17.5%;
-    }
-
-    20% {
-        bottom: 25%;
-        left: 15%;
-    }
-    25% {
-        bottom: 22.5%;
-        left: 12.5%;
-    }
-    30% {
-        bottom: 20%;
-        left: 10%;
-    }
-    35% {
-        left: 12.5%;
-    }
-    40% {
-        left: 15%;
-    }
-    50% {
-        left: 17.5%;
-    }
-    55% {
-        left: 20%;
-    }
-    60% {
-        left: 22.5%;
-    }
-    65% {
-        left: 25%;
-    }
-    70% {
-        bottom: 22.5%;
-        left: 27.5%;
-    }
-    75% {
-        bottom: 25%;
-        left: 30%;
-    }
-    80% {
-        bottom: 27.5%;
-        left: 32.5%;
-    }
-    85% {
-        bottom: 30%;
-        left: 35%;
-    }
-    90% {
-        left: 37.5%;
-    }
-    95% {
-        left: 40%;
-    }
-    100% {
-        bottom: 32.5%;
     }
 }
 
