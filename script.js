@@ -141,12 +141,13 @@ memoryGame.checkCards = function() {
     // This is for timer and count and to count the number of matches. The timer won't start until users click on a card that's why I use .one
     // Once users click on a card, the time goes down by 1 every second.
     $gameBoardContainer.one('click', '.card', () => {
+        const $bonusTime = $('.bonusTime');
         const timeChecker = () => {
             memoryGame.timer--;
             $timer.text(`TIME: ${memoryGame.timer}`);
 
             if (memoryGame.timer === 20) {
-                $('.bonusTime').css('opacity', '1');
+                $bonusTime.css('opacity', '1');
             };
             
 
@@ -185,11 +186,17 @@ memoryGame.checkCards = function() {
 
         // When users have less than 20 seconds left, they can get 10 extra seconds by clicking on the bonus button.
         let lessThan20Seconds = false;
-        $('.bonusTime').one('click', function() {
+        $bonusTime.one('click', function() {
             lessThan20Seconds = !lessThan20Seconds;
             
-            if (memoryGame.timer <= 20 && lessThan20Seconds) {
+            if(memoryGame.timer <= 20 && lessThan20Seconds) {
                 memoryGame.timer += 10;
+                const $extra10Seconds = $('<p>').addClass('extra10Seconds')
+                                               .text('+10');
+                $('.clock').append($extra10Seconds);
+                setTimeout(() => {
+                    $('.extra10Seconds').fadeOut();
+                }, 2000);
             };
         });
     });
