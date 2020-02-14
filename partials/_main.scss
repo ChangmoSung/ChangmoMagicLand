@@ -1,6 +1,6 @@
 body {
     font-family: 'Cabin Sketch', cursive;
-    height: 100vh;
+    height: 110vh;
     transition: all 1s;
     background-image: url(../assets/background.jpeg);
     background-size: 100% 100%;
@@ -74,7 +74,6 @@ body {
             .gameStart {
                 display: flex;
                 justify-content: center;
-                margin-bottom: 150px;
 
                 button {
                     font-family: 'Cabin Sketch', cursive;
@@ -85,7 +84,7 @@ body {
                     box-shadow: 5px 5px 0 blue;
                     transition: all 0.5s;
                     width: 40%;
-                    margin-top: 25px;
+                    margin: 25px 0 0 0;
                     background: white;
                     z-index: 999;
 
@@ -260,7 +259,7 @@ body {
 
             h2 {
                 font-size: 14rem;
-                margin: 0 0 30px;
+                margin-bottom: 30px;
                 z-index: 2;
 
                 @include mq-768 {
