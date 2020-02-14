@@ -350,10 +350,6 @@ memoryGame.prepareToStart = function() {
     const $elsa = $('.elsa');
 
     $gameStartButton.on('click', () => {
-
-        // const welcomeAudio = new Audio('assets/KakaoTalk_Audio_2020-02-09-15-23-49.m4a');
-        // welcomeAudio.play();
-
         $descriptionContainer.fadeOut();
         $title.css('transform', 'translateY(-110%)');
         
