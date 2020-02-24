@@ -202,7 +202,7 @@ memoryGame.checkCards = function() {
             };
         });
     });
-
+    
 
     $('.card').on('click', function() {
         if(!gameOver) {
@@ -296,24 +296,22 @@ memoryGame.getCards = function() {
 
         if(memoryGame.levelSelected === 3) {
             $cardContainer.addClass('card level3')
-                         .attr('id', `${card.id}`);
+                         .attr('id', card.id);
 
         } else if (memoryGame.levelSelected === 2) {
             $cardContainer.addClass('card level2')
-                         .attr('id', `${card.id}`);
+                         .attr('id', card.id);
                          
         } else {
             $cardContainer.addClass('card')
-                         .attr('id', `${card.id}`);
+                         .attr('id', card.id);
         }
 
         const frontImg = $('<img>').addClass('front')
-                                   .attr('src', `${card.url}`)
-                                   .attr('aria-hidden', 'true');
+                                   .attr('src', card.url);
 
         const backImg = $('<img>').addClass('back')
-            .attr('src', 'assets/castle.png')
-            .attr('aria-hidden', 'true');
+            .attr('src', 'assets/castle.png');
 
         $cardContainer.append(frontImg, backImg);
 
@@ -343,7 +341,7 @@ const $count = $('.count');
 const $gameBoard = $('.gameBoard');
 
 memoryGame.prepareToStart = function() {
-    const $descriptionContainer = $('.descriptionContainer');
+    const $descriptionContainer = $('.description');
     const $title = $('.title');
     const $clock = $('.clock');
     const $alidin = $('.alidin');
@@ -351,7 +349,7 @@ memoryGame.prepareToStart = function() {
 
     $gameStartButton.on('click', () => {
         $descriptionContainer.fadeOut();
-        $title.css('transform', 'translateY(-110%)');
+        $title.css('transform', 'translateY(-150%)');
         
         setTimeout(() => {
             $gameBoard.css('display', 'block');

@@ -235,7 +235,6 @@ html {
 }
 html .wrapper {
   max-width: 800px;
-  padding: 0 30px;
   margin: 0 auto;
   width: 50%;
 }
@@ -259,145 +258,155 @@ html img {
   height: 100%;
 }
 
-body {
+main {
   font-family: "Cabin Sketch", cursive;
-  height: 110vh;
-  transition: all 1s;
+  height: 100vh;
   background-image: url(../assets/background.jpeg);
   background-size: 100% 100%;
 }
-body .title {
+main .title {
   text-align: center;
-  font-size: calc(60px + (110 - 60) * ((100vw - 320px) / (1680 - 320)));
+  font-size: calc(50px + (110 - 50) * ((100vw - 320px) / (1680 - 320)));
   margin: 0;
-  padding-top: calc(10px + (60 - 10) * ((100vw - 320px) / (1680 - 320)));
+  padding-top: calc(15px + (60 - 15) * ((100vw - 320px) / (1680 - 320)));
   transition: all 0.7s;
-  height: 23%;
+  height: 20%;
   color: blue;
 }
 @media (max-width: 768px) {
-  body .title {
-    height: 22%;
+  main .title {
+    height: 15%;
   }
 }
-body .descriptionContainer {
+main .description {
   color: blue;
+  height: 80%;
 }
-@media (max-width: 768px) {
-  body .descriptionContainer .wrapper {
-    padding: 0;
-  }
-}
-body .descriptionContainer .wrapper h2 {
-  font-size: calc(33px + (60 - 33) * ((100vw - 320px) / (1680 - 320)));
+main .description h2 {
+  font-size: calc(35px + (65 - 35) * ((100vw - 320px) / (1680 - 320)));
   text-align: center;
+  margin: 0;
+  height: 20%;
+  padding-top: 5%;
 }
-body .descriptionContainer .wrapper p {
+@media (max-width: 768px) {
+  main .description h2 {
+    padding-top: 12%;
+  }
+}
+@media (max-width: 420px) {
+  main .description h2 {
+    padding-top: 17%;
+  }
+}
+main .description p {
   font-size: calc(16px + (25 - 16) * ((100vw - 320px) / (1680 - 320)));
   line-height: 35px;
   text-align: center;
-  margin: calc(25px + (40 - 25) * ((100vw - 320px) / (1680 - 320))) auto;
   width: 100%;
-  margin-bottom: 0;
-  height: 15vh;
+  height: 20%;
 }
 @media (max-width: 768px) {
-  body .descriptionContainer .wrapper p {
+  main .description p {
     line-height: 30px;
     width: 100%;
-  }
-}
-@media (max-width: 650px) {
-  body .descriptionContainer .wrapper p {
     margin: 0 auto;
     line-height: calc(30px + (35 - 30) * ((100vw - 320px) / (650 - 320)));
   }
 }
-body .descriptionContainer .wrapper .levelContainer {
+main .description .levelContainer {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap;
-  margin: 50px auto 0;
+  height: 10%;
 }
-body .descriptionContainer .wrapper .levelContainer button {
+main .description .levelContainer button {
   font-family: "Cabin Sketch", cursive;
   font-size: 2.5rem;
   border: none;
-  padding: 12px 6%;
   border-radius: 50px;
-  margin: 0 0 30px;
   box-shadow: 5px 5px 0 blue;
   transition: all 0.5s;
   background: white;
   z-index: 999;
+  width: 20%;
 }
-body .descriptionContainer .wrapper .levelContainer button:focus, body .descriptionContainer .wrapper .levelContainer button:active, body .descriptionContainer .wrapper .levelContainer button:hover {
+main .description .levelContainer button:focus, main .description .levelContainer button:active, main .description .levelContainer button:hover {
   transform: translate(2.5px, 2.5px);
   box-shadow: 2.5px 2.5px blue;
 }
 @media (max-width: 1024px) {
-  body .descriptionContainer .wrapper .levelContainer {
+  main .description .levelContainer {
     width: 100%;
   }
 }
 @media (max-width: 768px) {
-  body .descriptionContainer .wrapper .levelContainer {
+  main .description .levelContainer {
     flex-direction: column;
-    width: 30%;
-    margin-top: 0;
+    width: 35%;
+    margin: 0 auto;
+    height: 30%;
+  }
+  main .description .levelContainer button {
+    width: 100%;
+    padding: 5%;
   }
 }
-body .descriptionContainer .wrapper .gameStart {
+main .description .gameStart {
   display: flex;
   justify-content: center;
+  height: 10%;
+  margin-top: 10%;
 }
-body .descriptionContainer .wrapper .gameStart button {
+main .description .gameStart button {
   font-family: "Cabin Sketch", cursive;
   font-size: 2.5rem;
   border: none;
-  padding: 12px 5%;
   border-radius: 50px;
   box-shadow: 5px 5px 0 blue;
   transition: all 0.5s;
-  width: 40%;
-  margin: 25px 0 0 0;
+  width: 50%;
   background: white;
   z-index: 999;
 }
-body .descriptionContainer .wrapper .gameStart button:focus, body .descriptionContainer .wrapper .gameStart button:active, body .descriptionContainer .wrapper .gameStart button:hover {
+main .description .gameStart button:focus, main .description .gameStart button:active, main .description .gameStart button:hover {
   transform: translate(2.5px, 2.5px);
   box-shadow: 2.5px 2.5px blue;
 }
-body .gameBoard {
-  height: 77%;
+@media (max-width: 420px) {
+  main .description .gameStart {
+    margin-top: 15%;
+  }
+}
+main .gameBoard {
+  height: 80%;
   position: relative;
   display: none;
 }
 @media (max-width: 768px) {
-  body .gameBoard {
-    height: 70%;
+  main .gameBoard {
+    padding-top: 5%;
   }
 }
-body .gameBoard .clock {
+main .gameBoard .clock {
   text-align: center;
   font-size: 3.3rem;
   justify-content: space-between;
   align-items: center;
   padding: 0;
-  margin-bottom: 30px;
+  height: 13%;
 }
 @media (max-width: 768px) {
-  body .gameBoard .clock {
+  main .gameBoard .clock {
     font-size: 2.5rem;
   }
 }
 @media (max-width: 420px) {
-  body .gameBoard .clock {
+  main .gameBoard .clock {
     font-size: 2rem;
   }
 }
-body .gameBoard .clock .count,
-body .gameBoard .clock .timer {
+main .gameBoard .clock .count,
+main .gameBoard .clock .timer {
   margin: 0;
   background: white;
   border-radius: 50px;
@@ -405,104 +414,105 @@ body .gameBoard .clock .timer {
   position: relative;
 }
 @media (max-width: 1024px) {
-  body .gameBoard .clock .count,
-body .gameBoard .clock .timer {
+  main .gameBoard .clock .count,
+main .gameBoard .clock .timer {
     padding: 5px;
   }
 }
-body .gameBoard .clock .extra10Seconds {
+main .gameBoard .clock .extra10Seconds {
   position: absolute;
-  top: -10vh;
+  top: 0;
   left: 20vw;
   background: white;
   padding: 0.3% 1%;
   border-radius: 50px;
 }
-body .gameBoard .clock button {
+main .gameBoard .clock button {
   font-family: "Cabin Sketch", cursive;
   border: none;
   font-size: 3.3rem;
-  height: 100%;
   border-radius: 50px;
   padding: 0.3% 1%;
   box-shadow: 5px 5px 0 blue;
   background: white;
   z-index: 999;
 }
-body .gameBoard .clock button:focus, body .gameBoard .clock button:active, body .gameBoard .clock button:hover {
+main .gameBoard .clock button:focus, main .gameBoard .clock button:active, main .gameBoard .clock button:hover {
   transform: translate(2.5px, 2.5px);
   box-shadow: 2.5px 2.5px blue;
 }
 @media (max-width: 1024px) {
-  body .gameBoard .clock button {
+  main .gameBoard .clock button {
     font-size: 3rem;
     padding: 5px;
   }
 }
 @media (max-width: 768px) {
-  body .gameBoard .clock button {
+  main .gameBoard .clock button {
     font-size: 2.5rem;
   }
 }
 @media (max-width: 420px) {
-  body .gameBoard .clock button {
+  main .gameBoard .clock button {
     font-size: 2rem;
   }
 }
-body .gameBoard .clock .bonusTime {
+main .gameBoard .clock .bonusTime {
   opacity: 0;
   transition: all 0.5s;
 }
-body .gameBoard .container {
+main .gameBoard .container {
   flex-wrap: wrap;
-  height: 75%;
+  height: 67%;
   justify-content: space-between;
   align-items: space-between;
   display: none;
   padding: 1.5%;
   background: rgba(98, 162, 224, 0.5);
 }
-body .gameBoard .container .card {
+main .gameBoard .container .card {
   position: relative;
   perspective: 700px;
   width: 21%;
   height: 21%;
   transition: all 0.5s;
 }
-body .gameBoard .container .card.matched {
+main .gameBoard .container .card.matched {
   transform: scale(0.5);
   opacity: 0.7;
   border-radius: 50px;
 }
-body .gameBoard .container .card.flipped .front {
+main .gameBoard .container .card.flipped .front {
   transform: rotateY(0deg);
 }
-body .gameBoard .container .card.flipped .back {
+main .gameBoard .container .card.flipped .back {
   transform: rotateY(180deg);
 }
-body .gameBoard .container .card.level2, body .gameBoard .container .card.level3 {
+main .gameBoard .container .card.level2, main .gameBoard .container .card.level3 {
   width: 17%;
   height: 21%;
 }
-body .gameBoard .container .card .front {
+main .gameBoard .container .card .front {
   position: absolute;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
-  transition: all 0.5s;
   transform: rotateY(-180deg);
-}
-body .gameBoard .container .card .back {
-  position: absolute;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
   transition: all 0.5s;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background-color: rgba(98, 162, 224, 0.01);
 }
-body .gameBoard .container .card .matchAnimation {
+main .gameBoard .container .card .back {
+  position: absolute;
+  transition: all 0.5s;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background-color: rgba(98, 162, 224, 0.01);
+}
+main .gameBoard .container .card .matchAnimation {
   width: 30px;
   height: 30px;
   position: absolute;
 }
-body .gameBoard .result {
+main .gameBoard .result {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -511,40 +521,40 @@ body .gameBoard .result {
   z-index: 2;
   padding: 0;
   width: 100vw;
-  height: 50vh;
   text-align: center;
 }
 @media (max-width: 420px) {
-  body .gameBoard .result {
+  main .gameBoard .result {
     padding: 15px;
   }
 }
-body .gameBoard .result h2 {
+main .gameBoard .result h2 {
   font-size: 14rem;
-  margin-bottom: 30px;
+  margin: 45px 0 0;
   z-index: 2;
 }
 @media (max-width: 768px) {
-  body .gameBoard .result h2 {
+  main .gameBoard .result h2 {
     font-size: 11rem;
     margin-bottom: 0;
   }
 }
 @media (max-width: 420px) {
-  body .gameBoard .result h2 {
+  main .gameBoard .result h2 {
     font-size: 8rem;
   }
 }
-body .gameBoard .result p {
+main .gameBoard .result p {
   font-size: 4rem;
   z-index: 2;
+  margin-top: 0;
 }
 @media (max-width: 420px) {
-  body .gameBoard .result p {
-    font-size: 3rem;
+  main .gameBoard .result p {
+    font-size: 2.5rem;
   }
 }
-body .gameBoard .result .playAgain {
+main .gameBoard .result .playAgain {
   font-family: "Cabin Sketch", cursive;
   font-size: 2.5rem;
   border: none;
@@ -553,27 +563,27 @@ body .gameBoard .result .playAgain {
   box-shadow: 8px 8px 0 blue;
   transition: all 0.5s;
   background: white;
-  margin-bottom: 50px;
+  margin-bottom: 80px;
   z-index: 999;
 }
-body .gameBoard .result .playAgain:focus, body .gameBoard .result .playAgain:active, body .gameBoard .result .playAgain:hover {
+main .gameBoard .result .playAgain:focus, main .gameBoard .result .playAgain:active, main .gameBoard .result .playAgain:hover {
   transform: translate(4px, 4px);
   box-shadow: 4px 4px blue;
 }
-body .mickey {
+main .mickey {
   position: absolute;
   bottom: 0;
   height: 40vh;
-  width: 30vw;
+  width: 35vw;
 }
-body .minnie {
+main .minnie {
   position: absolute;
   bottom: 0;
   right: 0;
   height: 40vh;
-  width: 30vw;
+  width: 35vw;
 }
-body .alidin {
+main .alidin {
   position: absolute;
   top: 0;
   height: 50vh;
@@ -582,17 +592,12 @@ body .alidin {
   transition: opacity 1s;
 }
 @media (max-width: 768px) {
-  body .alidin {
+  main .alidin {
     height: 45vh;
-    width: 45vw;
-  }
-}
-@media (max-width: 420px) {
-  body .alidin {
     width: 50vw;
   }
 }
-body .textMatch {
+main .textMatch {
   background: rgba(98, 162, 224, 0.5);
   position: absolute;
   font-size: 2rem;
@@ -601,18 +606,18 @@ body .textMatch {
   text-align: center;
   padding: 10px;
   opacity: 0;
-  color: blue;
   margin: 0;
+  font-weight: 700;
 }
 @media (max-width: 768px) {
-  body .textMatch {
-    top: 18%;
-    font-size: 1.6rem;
-    left: 15%;
-    padding: 5px;
+  main .textMatch {
+    top: 85%;
+    left: 0;
+    width: 100%;
+    text-align: center;
   }
 }
-body .elsa {
+main .elsa {
   position: absolute;
   top: 0;
   right: 0;
@@ -621,14 +626,14 @@ body .elsa {
   opacity: 0;
   transition: opacity 1s;
 }
-body .elsa .snowFlake:nth-child(odd) {
+main .elsa .snowFlake:nth-child(odd) {
   position: absolute;
   width: 20%;
   height: 13%;
   animation: firstSnowFlake 2s ease 1;
   z-index: 1;
 }
-body .elsa .snowFlake:nth-child(even) {
+main .elsa .snowFlake:nth-child(even) {
   position: absolute;
   width: 20%;
   height: 13%;
@@ -636,13 +641,8 @@ body .elsa .snowFlake:nth-child(even) {
   z-index: 1;
 }
 @media (max-width: 768px) {
-  body .elsa {
-    height: 45vh;
-    width: 45vw;
-  }
-}
-@media (max-width: 420px) {
-  body .elsa {
+  main .elsa {
+    height: 42vh;
     width: 50vw;
   }
 }

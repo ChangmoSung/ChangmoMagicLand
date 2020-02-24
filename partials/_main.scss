@@ -1,111 +1,122 @@
-body {
+main {
     font-family: 'Cabin Sketch', cursive;
-    height: 110vh;
-    transition: all 1s;
+    height: 100vh;
     background-image: url(../assets/background.jpeg);
     background-size: 100% 100%;
 
     .title {
         text-align: center;
-        font-size: calc(60px + (110 - 60) * ((100vw - 320px) / (1680 - 320)));
+        font-size: calc(50px + (110 - 50) * ((100vw - 320px) / (1680 - 320)));
         margin: 0;
-        padding-top: calc(10px + (60 - 10) * ((100vw - 320px) / (1680 - 320)));
+        padding-top: calc(15px + (60 - 15) * ((100vw - 320px) / (1680 - 320)));
         transition: all 0.7s;
-        height: 23%;
+        height: 20%;
         color: blue;
 
         @include mq-768 {
-            height: 22%;
+            height: 15%;
         }
     }
 
-    .descriptionContainer {
+    .description {
         color: blue;
-        
-        .wrapper {
+        height: 80%;
+
+        h2 {
+            font-size: calc(35px + (65 - 35) * ((100vw - 320px) / (1680 - 320)));
+            text-align: center;
+            margin: 0;
+            height: 20%;
+            padding-top: 5%;
 
             @include mq-768 {
-                padding: 0;
+                padding-top: 12%;
             }
 
-            h2 {
-                font-size: calc(33px + (60 - 33) * ((100vw - 320px) / (1680 - 320)));
-                text-align: center;
+            @include mq-420 {
+                padding-top: 17%;
             }
+        }
 
-            p {
-                font-size: calc(16px + (25 - 16) * ((100vw - 320px) / (1680 - 320)));
-                line-height: 35px;
-                text-align: center;
-                margin: calc(25px + (40 - 25) * ((100vw - 320px) / (1680 - 320))) auto;
+        p {
+            font-size: calc(16px + (25 - 16) * ((100vw - 320px) / (1680 - 320)));
+            line-height: 35px;
+            text-align: center;
+            width: 100%;
+            height: 20%;
+
+            @include mq-768 {
+                line-height: 30px;
                 width: 100%;
-                margin-bottom: 0;
-                height: 15vh;
+                margin: 0 auto;
+                line-height: calc(30px + (35 - 30) * ((100vw - 320px) / (650 - 320)));
+            }
+        }
+        
+        .levelContainer {
+            display: flex;
+            justify-content: space-between;
+            height: 10%;
 
-                @include mq-768 {
-                    line-height: 30px;
-                    width: 100%;
-                }
+             button {
+                @include button();
+            }
 
-                @include mq-650 {
-                    margin: 0 auto;
-                    line-height: calc(30px + (35 - 30) * ((100vw - 320px) / (650 - 320)));
-                }
+            @include mq-1024 {
+                width: 100%;
             }
             
-            .levelContainer {
-                display: flex;
-                justify-content: space-between;
-                flex-wrap: wrap;
-                margin: 50px auto 0;
-                @include button;
-    
-                @include mq-1024 {
+            @include mq-768 {
+                flex-direction: column;
+                width: 35%;
+                margin: 0 auto;
+                height: 30%;
+
+                button {
                     width: 100%;
+                    padding: 5%;
                 }
-                
-                @include mq-768 {
-                    flex-direction: column;
-                    width: 30%;
-                    margin-top: 0;
+            }
+        }
+
+        .gameStart {
+            display: flex;
+            justify-content: center;
+            height: 10%;
+            margin-top: 10%;
+
+            button {
+                font-family: 'Cabin Sketch', cursive;
+                font-size: 2.5rem;
+                border: none;
+                border-radius: 50px;
+                box-shadow: 5px 5px 0 blue;
+                transition: all 0.5s;
+                width: 50%;
+                background: white;
+                z-index: 999;
+
+                &:focus,
+                &:active,
+                &:hover {
+                    transform: translate(2.5px, 2.5px);
+                    box-shadow: 2.5px 2.5px blue;
                 }
             }
 
-            .gameStart {
-                display: flex;
-                justify-content: center;
-
-                button {
-                    font-family: 'Cabin Sketch', cursive;
-                    font-size: 2.5rem;
-                    border: none;
-                    padding: 12px 5%;
-                    border-radius: 50px;
-                    box-shadow: 5px 5px 0 blue;
-                    transition: all 0.5s;
-                    width: 40%;
-                    margin: 25px 0 0 0;
-                    background: white;
-                    z-index: 999;
-
-                    &:focus,
-                    &:active,
-                    &:hover {
-                        transform: translate(2.5px, 2.5px);
-                        box-shadow: 2.5px 2.5px blue;
-                    }
-                }
+            @include mq-420 {
+                margin-top: 15%;
             }
         }
     }
     
     .gameBoard {
-        height: 77%;
+        height: 80%;
         position: relative;
         display: none;
 
         @include mq-768 {
-            height: 70%;
+            padding-top: 5%;
         }
         
         .clock {
@@ -114,7 +125,7 @@ body {
             justify-content: space-between;
             align-items: center;
             padding: 0;
-            margin-bottom: 30px;
+            height: 13%;
 
             @include mq-768 {
                 font-size: 2.5rem;
@@ -139,7 +150,7 @@ body {
 
             .extra10Seconds {
                 position: absolute;
-                top: -10vh;
+                top: 0;
                 left: 20vw;
                 background: white;
                 padding: 0.3% 1%;
@@ -150,7 +161,6 @@ body {
                 font-family: 'Cabin Sketch', cursive;
                 border: none;
                 font-size: 3.3rem;
-                height: 100%;
                 border-radius: 50px;
                 padding: 0.3% 1%;
                 box-shadow: 5px 5px 0 blue;
@@ -186,7 +196,7 @@ body {
 
         .container {
             flex-wrap: wrap;
-            height: 75%;
+            height: 67%;
             justify-content: space-between;
             align-items: space-between;
             display: none;
@@ -205,15 +215,16 @@ body {
                     opacity: 0.7;
                     border-radius: 50px;
                 }
-    
+                
                 &.flipped .front {
-                        transform: rotateY(0deg);
-                    }
-    
-                &.flipped .back{
-                        transform: rotateY(180deg);
-                    }
-    
+                    transform: rotateY(0deg);
+                }
+
+                &.flipped .back {
+                    transform: rotateY(180deg);
+                }
+                
+
                 &.level2,
                 &.level3 {
                     width: 17%;
@@ -222,15 +233,19 @@ body {
     
                 .front {
                     position: absolute;
-                    backface-visibility: hidden;
-                    transition: all 0.5s;
                     transform: rotateY(-180deg);
+                    transition: all 0.5s;
+                    backface-visibility: hidden;
+                    -webkit-backface-visibility: hidden;
+                    background-color: rgba(98,162,224,0.01);
                 }
                 
                 .back {
                     position: absolute;
-                    backface-visibility: hidden;
                     transition: all 0.5s;
+                    backface-visibility: hidden;
+                    -webkit-backface-visibility: hidden;
+                    background-color: rgba(98,162,224,0.01);
                 }
 
                 .matchAnimation {
@@ -250,7 +265,6 @@ body {
             z-index: 2;
             padding: 0;
             width: 100vw;
-            height: 50vh;
             text-align: center;
 
             @include mq-420 {
@@ -259,7 +273,7 @@ body {
 
             h2 {
                 font-size: 14rem;
-                margin-bottom: 30px;
+                margin: 45px 0 0;
                 z-index: 2;
 
                 @include mq-768 {
@@ -275,9 +289,10 @@ body {
             p {
                 font-size: 4rem;
                 z-index: 2;
+                margin-top: 0;
 
                 @include mq-420 {
-                    font-size: 3rem;
+                    font-size: 2.5rem;
                 }
             }
 
@@ -290,7 +305,7 @@ body {
                 box-shadow: 8px 8px 0 blue;
                 transition: all 0.5s;
                 background: white;
-                margin-bottom: 50px;
+                margin-bottom: 80px;
                 z-index: 999;
 
                 &:focus,
@@ -307,7 +322,7 @@ body {
         position: absolute;
         bottom: 0;
         height: 40vh;
-        width: 30vw;
+        width: 35vw;
     }
 
     .minnie {
@@ -315,7 +330,7 @@ body {
         bottom: 0;
         right: 0;
         height: 40vh;
-        width: 30vw;
+        width: 35vw;
     }
 
     .alidin {
@@ -328,10 +343,6 @@ body {
 
         @include mq-768 {
             height: 45vh;
-            width: 45vw;
-        }
-
-        @include mq-420 {
             width: 50vw;
         }
     }
@@ -345,14 +356,14 @@ body {
         text-align: center;
         padding: 10px;
         opacity: 0;
-        color: blue;
         margin: 0;
+        font-weight: 700;
 
         @include mq-768 {
-            top: 18%;
-            font-size: 1.6rem;
-            left: 15%;
-            padding: 5px;
+            top: 85%;
+            left: 0;
+            width: 100%;
+            text-align: center;
         }
     }
 
@@ -382,11 +393,7 @@ body {
         }
 
         @include mq-768 {
-            height: 45vh;
-            width: 45vw;
-        }
-
-        @include mq-420 {
+            height: 42vh;
             width: 50vw;
         }
     }
