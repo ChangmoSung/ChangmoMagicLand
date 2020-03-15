@@ -208,6 +208,8 @@ main {
                 perspective: 700px;
                 width: 21%;
                 height: 21%;
+                background: none;
+                border: none;
                 transition: all 0.5s;
     
                 &.matched {
@@ -233,6 +235,8 @@ main {
     
                 .front {
                     position: absolute;
+                    top: 0;
+                    left: 0;
                     transform: rotateY(-180deg);
                     transition: all 0.5s;
                     backface-visibility: hidden;
@@ -242,6 +246,8 @@ main {
                 
                 .back {
                     position: absolute;
+                    top: 0;
+                    left: 0;
                     transition: all 0.5s;
                     backface-visibility: hidden;
                     -webkit-backface-visibility: hidden;

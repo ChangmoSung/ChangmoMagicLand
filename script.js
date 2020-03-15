@@ -136,20 +136,28 @@ memoryGame.checkCards = function() {
     $('.resetButton').on('click', () => {
         location.reload();
     });
-    
 
+    $gameBoardContainer.one('keydown', '.card', () => {
+        timeStart()
+    })
     // This is for timer and count and to count the number of matches. The timer won't start until users click on a card that's why I use .one
     // Once users click on a card, the time goes down by 1 every second.
     $gameBoardContainer.one('click', '.card', () => {
+        timeStart()
+    });
+
+    function timeStart() {
         const $bonusTime = $('.bonusTime');
+
         const timeChecker = () => {
             memoryGame.timer--;
+
             $timer.text(`TIME: ${memoryGame.timer}`);
 
             if (memoryGame.timer === 20) {
                 $bonusTime.css('opacity', '1');
             };
-            
+
 
             // Once their targetted number of matches is met or time is up, make all the cards unclickable and show the result.
             if (memoryGame.timer === 0 || memoryGame.targettedMatches === numberOfMatches) {
@@ -186,12 +194,12 @@ memoryGame.checkCards = function() {
 
         // When users have less than 20 seconds left, they can get 10 extra seconds by clicking on the bonus button.
         let lessThan20Seconds = false;
-        $bonusTime.one('click', function() {
+        $bonusTime.one('click', function () {
             lessThan20Seconds = !lessThan20Seconds;
-            
-            if(memoryGame.timer <= 20 && lessThan20Seconds) {
+
+            if (memoryGame.timer <= 20 && lessThan20Seconds) {
                 const $extra10Seconds = $('<p>').addClass('extra10Seconds')
-                                                .text('+10');
+                    .text('+10');
 
                 $('.clock').append($extra10Seconds);
                 setTimeout(() => {
@@ -201,7 +209,7 @@ memoryGame.checkCards = function() {
                 memoryGame.timer += 10;
             };
         });
-    });
+    }
     
 
     $('.card').on('click', function() {
@@ -212,12 +220,13 @@ memoryGame.checkCards = function() {
             if (userFlippedCard) {
                 // to prevent users from clicking on already clicked cards
                 firstPick = $(this).css('pointer-events', 'none')
+                                   .prop('disabled', true)
                                    .addClass('flipped');
 
             } else {
                 secondPick = $(this).addClass('flipped');
 
-                $('.card').css('pointer-events', 'none');
+                $('.card').css('pointer-events', 'none').prop('disabled', true);
 
                 count++;
                 $count.text(`COUNT: ${count}`);
@@ -228,19 +237,22 @@ memoryGame.checkCards = function() {
             if (firstPick.attr('id') === secondPick.attr('id') && !userFlippedCard) {
                 numberOfMatches++;
 
-                $('.card').css('pointer-events', 'auto');
+                $('.card').css('pointer-events', 'auto').prop('disabled', false);
 
                 // to prevent users from clicking on already clicked cards
                 firstPick.addClass('matched')
-                         .css('pointer-events', 'none');
+                         .css('pointer-events', 'none')
+                         .prop('disabled', true);
                 secondPick.addClass('matched')
-                          .css('pointer-events', 'none');
+                          .css('pointer-events', 'none')
+                          .prop('disabled', true);
 
                 firstPick = '';
                 secondPick = '';
 
                 if ($('.card').hasClass('matched')) {
-                    $('.matched').css('pointer-events', 'none');
+                    $('.matched').css('pointer-events', 'none')
+                                 .prop('disabled', true);
 
                     cards.filter(card => {
                         if(card.id === $(this).attr('id')) {
@@ -267,21 +279,23 @@ memoryGame.checkCards = function() {
                     })
 
                 } else {
-                    $('.card').css('pointer-events', 'auto');
+                    $('.card').css('pointer-events', 'auto').prop('disabled', false);
                 }
 
             } else {
                 setTimeout(() => {
                     firstPick.removeClass('flipped')
-                             .css('pointer-events', 'auto');
+                             .css('pointer-events', 'auto')
+                             .prop('disabled', false);
                     secondPick.removeClass('flipped')
-                              .css('pointer-events', 'auto');
+                              .css('pointer-events', 'auto')
+                              .prop('disabled', false);
 
                     firstPick = '';
                     secondPick = '';
 
-                    $('.card').css('pointer-events', 'auto');
-                    $('.matched').css('pointer-events', 'none');
+                    $('.card').css('pointer-events', 'auto').prop('disabled', false);
+                    $('.matched').css('pointer-events', 'none').prop('disabled', true);
                 }, 500);
             };
         };
@@ -292,7 +306,7 @@ memoryGame.checkCards = function() {
 // Show all the cards on the game board based on the level that users selected. 
 memoryGame.getCards = function() {
     cards.forEach(card => {
-        const $cardContainer = $('<div>');
+        const $cardContainer = $('<button>');
 
         if(memoryGame.levelSelected === 3) {
             $cardContainer.addClass('card level3')
@@ -366,7 +380,7 @@ memoryGame.prepareToStart = function() {
 };
 
 
-// users have to select a level to start the game so there are three of the same functions attached to each event listener.
+// users have to select a level to start the game. Once users select a level, the data for timer, the number of cards and targetted matches gets stored to variables and level buttons get unclickable
 memoryGame.timer = '';
 memoryGame.targettedMatches = 0;
 memoryGame.levelSelected = false;

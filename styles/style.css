@@ -475,6 +475,8 @@ main .gameBoard .container .card {
   perspective: 700px;
   width: 21%;
   height: 21%;
+  background: none;
+  border: none;
   transition: all 0.5s;
 }
 main .gameBoard .container .card.matched {
@@ -494,6 +496,8 @@ main .gameBoard .container .card.level2, main .gameBoard .container .card.level3
 }
 main .gameBoard .container .card .front {
   position: absolute;
+  top: 0;
+  left: 0;
   transform: rotateY(-180deg);
   transition: all 0.5s;
   backface-visibility: hidden;
@@ -502,6 +506,8 @@ main .gameBoard .container .card .front {
 }
 main .gameBoard .container .card .back {
   position: absolute;
+  top: 0;
+  left: 0;
   transition: all 0.5s;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
