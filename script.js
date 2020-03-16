@@ -137,17 +137,12 @@ memoryGame.checkCards = function() {
         location.reload();
     });
 
-    $gameBoardContainer.one('keydown', '.card', () => {
-        timeStart()
-    })
+  
     // This is for timer and count and to count the number of matches. The timer won't start until users click on a card that's why I use .one
     // Once users click on a card, the time goes down by 1 every second.
-    $gameBoardContainer.one('click', '.card', () => {
-        timeStart()
-    });
-
-    function timeStart() {
-        const $bonusTime = $('.bonusTime');
+    $gameBoardContainer.one('click', () => {
+        const $bonusTime = $('.bonusTime').css('pointer-events', 'none')
+                                          .prop('disabled', true);
 
         const timeChecker = () => {
             memoryGame.timer--;
@@ -155,13 +150,16 @@ memoryGame.checkCards = function() {
             $timer.text(`TIME: ${memoryGame.timer}`);
 
             if (memoryGame.timer === 20) {
-                $bonusTime.css('opacity', '1');
+                $bonusTime.css('opacity', '1')
+                          .css('pointer-events', 'auto')
+                          .prop('disabled', false);
             };
 
 
             // Once their targetted number of matches is met or time is up, make all the cards unclickable and show the result.
             if (memoryGame.timer === 0 || memoryGame.targettedMatches === numberOfMatches) {
                 gameOver = true;
+                
                 $gameBoardContainer.css('pointer-events', 'none');
                 clearInterval(interval);
 
@@ -193,35 +191,30 @@ memoryGame.checkCards = function() {
 
 
         // When users have less than 20 seconds left, they can get 10 extra seconds by clicking on the bonus button.
-        let lessThan20Seconds = false;
         $bonusTime.one('click', function () {
-            lessThan20Seconds = !lessThan20Seconds;
+            const $extra10Seconds = $('<p>').addClass('extra10Seconds')
+                                            .text('+10');
 
-            if (memoryGame.timer <= 20 && lessThan20Seconds) {
-                const $extra10Seconds = $('<p>').addClass('extra10Seconds')
-                    .text('+10');
+            $('.clock').append($extra10Seconds);
+            setTimeout(() => {
+                $('.extra10Seconds').fadeOut();
+            }, 2000);
 
-                $('.clock').append($extra10Seconds);
-                setTimeout(() => {
-                    $('.extra10Seconds').fadeOut();
-                }, 2000);
-
-                memoryGame.timer += 10;
-            };
+            memoryGame.timer += 10;
         });
-    }
-    
+    });
+
 
     $('.card').on('click', function() {
         if(!gameOver) {
-            // The userFlippedCard variable is set to false on load and it turns to true and false every time users click on a card which means after users click one time, usersFlippedCard will be true and after users click two times, userFlippedCard will be false so when userFlippedCard is true, the value of the first clicked card will be set to firstPick variable and when it's false, the second clicked card will be set to secondPick variable.
+            // The userFlippedCard variable is set to false on game start and it turns to true and false every time users click on a card which means after users click one time, usersFlippedCard will be true and after users click two times, userFlippedCard will be false so when userFlippedCard is true, the value of the first clicked card will be set to firstPick variable and when it's false, the second clicked card will be set to secondPick variable.
             userFlippedCard = !userFlippedCard;
 
             if (userFlippedCard) {
                 // to prevent users from clicking on already clicked cards
                 firstPick = $(this).css('pointer-events', 'none')
-                                   .prop('disabled', true)
-                                   .addClass('flipped');
+                                   .addClass('flipped')
+                                   .prop('disabled', true);
 
             } else {
                 secondPick = $(this).addClass('flipped');
@@ -243,6 +236,7 @@ memoryGame.checkCards = function() {
                 firstPick.addClass('matched')
                          .css('pointer-events', 'none')
                          .prop('disabled', true);
+
                 secondPick.addClass('matched')
                           .css('pointer-events', 'none')
                           .prop('disabled', true);
@@ -263,8 +257,8 @@ memoryGame.checkCards = function() {
                             // snow flake effect for when the cards match.
                             const snowFlakeDiv = $('<div>').addClass('snowFlake');
                             const snowImg = new Image();
-                            snowImg.src = 'assets/snowFlake.png';
                             snowFlakeDiv.append(snowImg);
+                            snowImg.src = 'assets/snowFlake.png';
                             $('.elsa').append(snowFlakeDiv);
 
 
@@ -306,26 +300,23 @@ memoryGame.checkCards = function() {
 // Show all the cards on the game board based on the level that users selected. 
 memoryGame.getCards = function() {
     cards.forEach(card => {
-        const $cardContainer = $('<button>');
+        const $cardContainer = $('<button>').attr('id', card.id);
 
         if(memoryGame.levelSelected === 3) {
-            $cardContainer.addClass('card level3')
-                         .attr('id', card.id);
+            $cardContainer.addClass('card level3');
 
         } else if (memoryGame.levelSelected === 2) {
-            $cardContainer.addClass('card level2')
-                         .attr('id', card.id);
+            $cardContainer.addClass('card level2');
                          
         } else {
-            $cardContainer.addClass('card')
-                         .attr('id', card.id);
+            $cardContainer.addClass('card');
         }
 
         const frontImg = $('<img>').addClass('front')
                                    .attr('src', card.url);
 
         const backImg = $('<img>').addClass('back')
-            .attr('src', 'assets/castle.png');
+                                  .attr('src', 'assets/castle.png');
 
         $cardContainer.append(frontImg, backImg);
 
@@ -366,11 +357,11 @@ memoryGame.prepareToStart = function() {
         $title.css('transform', 'translateY(-150%)');
         
         setTimeout(() => {
+            $count.text('COUNT: 0');
+            $timer.text(`TIME: ${memoryGame.timer}`);
             $gameBoard.css('display', 'block');
             $gameBoardContainer.css('display', 'flex');
             $clock.css('display', 'flex');
-            $count.text('COUNT: 0');
-            $timer.text(`TIME: ${memoryGame.timer}`);
             $alidin.css('opacity', '1');
             $elsa.css('opacity', '1');
             
@@ -393,47 +384,46 @@ memoryGame.init = function() {
     $('.level').on('click', function () {
         memoryGame.levelSelected = true;
 
-        if (memoryGame.levelSelected) {
-            const numberOfLevel1Cards = $(this).attr('data-cardNumber');
-            const level1Cards = cards.slice(0, numberOfLevel1Cards);
-            const level1Time = $(this).attr('data-time');
+        $level1.css('pointer-events', 'none')
+               .prop('disabled', true);
 
-            cards = level1Cards;
-            memoryGame.timer = level1Time;
+        $level2.css('pointer-events', 'none')
+               .prop('disabled', true);
+
+        $level3.css('pointer-events', 'none')
+               .prop('disabled', true);
+
+        if (memoryGame.levelSelected) {
+            const numberOfCards = $(this).attr('data-cardNumber');
+            const numberOfSlicedCards = cards.slice(0, numberOfCards);
+            const time = $(this).attr('data-time');
+
+            cards = numberOfSlicedCards;
+            memoryGame.timer = time;
 
             if (memoryGame.timer === '50' && cards.length === 20) {
                 memoryGame.targettedMatches = 10;
                 memoryGame.levelSelected = 3;
-                $level3
-                    .css('pointer-events', 'none');
-                $level2
-                    .css('opacity', '0')
-                    .css('pointer-events', 'none');
-                $level1
-                    .css('opacity', '0')
-                    .css('pointer-events', 'none');
+                
+                $level1.css('opacity', '0');
+
+                $level2.css('opacity', '0');
+
             } else if (memoryGame.timer === '60' && cards.length === 20) {
                 memoryGame.targettedMatches = 10;
                 memoryGame.levelSelected = 2;
-                $level3
-                    .css('pointer-events', 'none')
-                    .css('opacity', '0');
-                $level2
-                    .css('pointer-events', 'none');
-                $level1
-                    .css('opacity', '0')
-                    .css('pointer-events', 'none');
+
+                $level1.css('opacity', '0');
+
+                $level3.css('opacity', '0');
+
             } else {
                 memoryGame.targettedMatches = 8;
                 memoryGame.levelSelected = 1;
-                $level3
-                    .css('pointer-events', 'none')
-                    .css('opacity', '0');
-                $level2
-                    .css('opacity', '0')
-                    .css('pointer-events', 'none');
-                $level1
-                    .css('pointer-events', 'none');
+
+                $level2.css('opacity', '0');
+
+                $level3.css('opacity', '0');
             }
 
             memoryGame.prepareToStart();

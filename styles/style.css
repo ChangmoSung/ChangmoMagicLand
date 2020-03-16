@@ -269,7 +269,7 @@ main .title {
   font-size: calc(50px + (110 - 50) * ((100vw - 320px) / (1680 - 320)));
   margin: 0;
   padding-top: calc(15px + (60 - 15) * ((100vw - 320px) / (1680 - 320)));
-  transition: all 0.7s;
+  transition: all 1s;
   height: 20%;
   color: blue;
 }
@@ -320,6 +320,7 @@ main .description .levelContainer {
   height: 10%;
 }
 main .description .levelContainer button {
+  cursor: pointer;
   font-family: "Cabin Sketch", cursive;
   font-size: 2.5rem;
   border: none;
@@ -367,6 +368,7 @@ main .description .gameStart button {
   width: 50%;
   background: white;
   z-index: 999;
+  cursor: pointer;
 }
 main .description .gameStart button:focus, main .description .gameStart button:active, main .description .gameStart button:hover {
   transform: translate(2.5px, 2.5px);
@@ -435,7 +437,8 @@ main .gameBoard .clock button {
   padding: 0.3% 1%;
   box-shadow: 5px 5px 0 blue;
   background: white;
-  z-index: 999;
+  transition: all 0.5s;
+  cursor: pointer;
 }
 main .gameBoard .clock button:focus, main .gameBoard .clock button:active, main .gameBoard .clock button:hover {
   transform: translate(2.5px, 2.5px);
@@ -459,7 +462,6 @@ main .gameBoard .clock button:focus, main .gameBoard .clock button:active, main 
 }
 main .gameBoard .clock .bonusTime {
   opacity: 0;
-  transition: all 0.5s;
 }
 main .gameBoard .container {
   flex-wrap: wrap;
@@ -475,9 +477,11 @@ main .gameBoard .container .card {
   perspective: 700px;
   width: 21%;
   height: 21%;
+  z-index: 999;
   background: none;
   border: none;
   transition: all 0.5s;
+  cursor: pointer;
 }
 main .gameBoard .container .card.matched {
   transform: scale(0.5);
@@ -571,6 +575,7 @@ main .gameBoard .result .playAgain {
   background: white;
   margin-bottom: 80px;
   z-index: 999;
+  cursor: pointer;
 }
 main .gameBoard .result .playAgain:focus, main .gameBoard .result .playAgain:active, main .gameBoard .result .playAgain:hover {
   transform: translate(4px, 4px);
