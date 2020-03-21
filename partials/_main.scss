@@ -304,6 +304,11 @@ main {
                 @include mq-420 {
                     font-size: 2.5rem;
                 }
+
+                span {
+                    font-size: 5rem;
+                    color: blue;
+                }
             }
 
             .playAgain {
@@ -362,7 +367,7 @@ main {
         background: rgba(98,162,224,0.5);
         position: absolute;
         font-size: 2rem;
-        top: 15%;
+        top: 13%;
         left: 30%;
         text-align: center;
         padding: 10px;

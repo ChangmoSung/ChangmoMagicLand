@@ -169,7 +169,7 @@ memoryGame.checkCards = function() {
                     const resultDescription = `
                         <div class="result">
                             <h2>RESULT</h2>
-                            <p>You tried ${count} times and brought ${numberOfMatches} friends back home!!</p>
+                            <p>You tried <span>${count}</span> times and brought <span>${numberOfMatches}</span> friends back home!!</p>
                             <button class="playAgain">PLAY AGAIN</button>
                         </div>
                     `;
@@ -377,9 +377,9 @@ memoryGame.targettedMatches = 0;
 memoryGame.levelSelected = false;
 
 memoryGame.init = function() {
-    let $level1 = $('.level1');
-    let $level2 = $('.level2');
-    let $level3 = $('.level3');
+    const $level1 = $('.level1');
+    const $level2 = $('.level2');
+    const $level3 = $('.level3');
 
     $('.level').on('click', function () {
         memoryGame.levelSelected = true;
