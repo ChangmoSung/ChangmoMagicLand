@@ -1,20 +1,24 @@
 @mixin button () {
-        font-family: 'Cabin Sketch', cursive;
-        font-size: 2.5rem;
-        border: none;
-        border-radius: 50px;
-        box-shadow: 5px 5px 0 blue;
-        transition: all 0.5s;
-        background: white;
-        z-index: 999;
-        width: 20%;
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 2.5rem;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 5px 5px 0 blue;
+    transition: all 0.5s;
+    background: white;
+    z-index: 999;
+    width: 20%;
 
-        &:focus,
-        &:active,
-        &:hover {
-            transform: translate(2.5px, 2.5px);
-            box-shadow: 2.5px 2.5px blue;
-        }
+    &:focus,
+    &:active,
+    &:hover {
+        transform: translate(2.5px, 2.5px);
+        box-shadow: 2.5px 2.5px blue;
+    }
+
+    @include mq-420 {
+        font-size: 2rem;
+    }
 }
 
 @mixin mq-1024 {

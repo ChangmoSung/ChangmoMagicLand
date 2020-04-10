@@ -308,10 +308,14 @@ main .description p {
 }
 @media (max-width: 768px) {
   main .description p {
-    line-height: 30px;
     width: 100%;
     margin: 0 auto;
     line-height: calc(30px + (35 - 30) * ((100vw - 320px) / (650 - 320)));
+  }
+}
+@media (max-width: 420px) {
+  main .description p {
+    line-height: 2.7rem;
   }
 }
 main .description .levelContainer {
@@ -335,6 +339,11 @@ main .description .levelContainer button:focus, main .description .levelContaine
   transform: translate(2.5px, 2.5px);
   box-shadow: 2.5px 2.5px blue;
 }
+@media (max-width: 420px) {
+  main .description .levelContainer button {
+    font-size: 2rem;
+  }
+}
 @media (max-width: 1024px) {
   main .description .levelContainer {
     width: 100%;
@@ -350,6 +359,14 @@ main .description .levelContainer button:focus, main .description .levelContaine
   main .description .levelContainer button {
     width: 100%;
     padding: 5%;
+  }
+}
+@media (max-width: 420px) {
+  main .description .levelContainer {
+    height: 34%;
+  }
+  main .description .levelContainer button {
+    padding: 6%;
   }
 }
 main .description .gameStart {
@@ -375,8 +392,15 @@ main .description .gameStart button:focus, main .description .gameStart button:a
   box-shadow: 2.5px 2.5px blue;
 }
 @media (max-width: 420px) {
+  main .description .gameStart button {
+    font-size: 2rem;
+    width: 45%;
+  }
+}
+@media (max-width: 420px) {
   main .description .gameStart {
-    margin-top: 15%;
+    height: 9%;
+    margin-top: 12%;
   }
 }
 main .gameBoard {
@@ -531,6 +555,7 @@ main .gameBoard .result {
   z-index: 2;
   padding: 0;
   width: 100vw;
+  height: 80%;
   text-align: center;
 }
 @media (max-width: 420px) {
@@ -589,22 +614,45 @@ main .mickey {
   position: absolute;
   bottom: 0;
   height: 40vh;
-  width: 35vw;
+  width: 32vw;
+}
+@media (max-width: 1024px) {
+  main .mickey {
+    width: 32vw;
+    height: 36vh;
+  }
 }
 main .minnie {
   position: absolute;
   bottom: 0;
   right: 0;
   height: 40vh;
-  width: 35vw;
+  width: 32vw;
+}
+@media (max-width: 1024px) {
+  main .minnie {
+    width: 32vw;
+    height: 36vh;
+  }
+}
+@media (max-width: 420px) {
+  main .minnie {
+    width: 30vw;
+  }
 }
 main .alidin {
   position: absolute;
   top: 0;
-  height: 50vh;
-  width: 40vw;
+  height: 48vh;
+  width: 36vw;
   opacity: 0;
   transition: opacity 1s;
+}
+@media (max-width: 1024px) {
+  main .alidin {
+    width: 46vw;
+    height: 44vh;
+  }
 }
 @media (max-width: 768px) {
   main .alidin {
@@ -612,24 +660,10 @@ main .alidin {
     width: 50vw;
   }
 }
-main .textMatch {
-  background: rgba(98, 162, 224, 0.5);
-  position: absolute;
-  font-size: 2rem;
-  top: 13%;
-  left: 30%;
-  text-align: center;
-  padding: 10px;
-  opacity: 0;
-  margin: 0;
-  font-weight: 700;
-}
-@media (max-width: 768px) {
-  main .textMatch {
-    top: 85%;
-    left: 0;
-    width: 100%;
-    text-align: center;
+@media (max-width: 420px) {
+  main .alidin {
+    width: 54vw;
+    height: 41vh;
   }
 }
 main .elsa {
@@ -637,7 +671,7 @@ main .elsa {
   top: 0;
   right: 0;
   height: 46vh;
-  width: 40vw;
+  width: 30vw;
   opacity: 0;
   transition: opacity 1s;
 }
@@ -655,10 +689,22 @@ main .elsa .snowFlake:nth-child(even) {
   animation: secondSnowFlake 2.5s ease 1;
   z-index: 1;
 }
+@media (max-width: 1024px) {
+  main .elsa {
+    width: 46vw;
+    height: 44vh;
+  }
+}
 @media (max-width: 768px) {
   main .elsa {
     height: 42vh;
     width: 50vw;
+  }
+}
+@media (max-width: 420px) {
+  main .elsa {
+    height: 39vh;
+    width: 52vw;
   }
 }
 

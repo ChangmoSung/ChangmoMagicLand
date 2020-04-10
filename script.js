@@ -5,7 +5,6 @@ let cards = [
         url: "assets/kungfupanda.png",
         alt: "kungFuPanda",
         id: 'kungFuPanda',
-        text: "There are no coincidences in this world",
         audio: 'assets/kungfupanda.m4a'
     },
     {
@@ -18,7 +17,6 @@ let cards = [
         url: "assets/elsaCard.png",
         alt: "elsa",
         id: 'elsa',
-        text: 'The cold never bothered me anyway',
         audio: 'assets/elsa.m4a'
     },
     {
@@ -30,7 +28,6 @@ let cards = [
         url: "assets/lionking.png",
         alt: "lion king",
         id: 'lionKing',
-        text: 'I laugh in the face of danger',
         audio: 'assets/symba.m4a'
     },
     {
@@ -42,7 +39,6 @@ let cards = [
         url: "assets/pinocchio.png",
         alt: "pinocchio",
         id: 'pinocchio',
-        text: 'When he lies his niose gets big',
         audio: 'assets/pinocchio.m4a'
     },
     {
@@ -54,7 +50,6 @@ let cards = [
         url: "assets/woody.png",
         alt: "woody",
         id: 'woody',
-        text: 'Reach for the sky',
         audio: 'assets/woody.m4a'
     },
     {
@@ -66,7 +61,6 @@ let cards = [
         url: "assets/nemo.png",
         alt: "nemo",
         id: 'nemo',
-        text: 'Fish are friends, not food.',
         audio: 'assets/nemo.m4a'
     },
     {
@@ -78,7 +72,6 @@ let cards = [
         url: "assets/mrIncredible.png",
         alt: "Mr.Incredible",
         id: 'mrIncredible',
-        text: 'That was totally wicked',
         audio: 'assets/incredibles.m4a'
     },
     {
@@ -90,7 +83,6 @@ let cards = [
         url: "assets/mickeymouse.png",
         alt: "mickey mouse",
         id: 'mickeymouse',
-        text: 'It is kind of fun to do the impossible',
         audio: 'assets/mickeymouse.m4a'
     },
     {
@@ -102,7 +94,6 @@ let cards = [
         url: "assets/shrek.png",
         alt: "shrek and fiona",
         id: 'shrek',
-        text: 'Are you Princess Fiona?',
         audio: 'assets/shrek.m4a'
     },
     {
@@ -114,7 +105,6 @@ let cards = [
         url: "assets/coco.png",
         alt: "coco",
         id: 'coco',
-        text: 'Nothing is more important than family',
         audio: 'assets/coco.m4a'
     },
     {
@@ -175,7 +165,6 @@ memoryGame.checkCards = function() {
                     `;
 
                     $gameBoard.append(resultDescription);
-                    $('.textMatch').text('YOU ARE THE BEST!!');
 
                     // to play again.
                     $('.playAgain').on('click', () => {
@@ -250,10 +239,6 @@ memoryGame.checkCards = function() {
 
                     cards.filter(card => {
                         if(card.id === $(this).attr('id')) {
-                            $('.textMatch').text(card.text)
-                                           .css('opacity', '1');
-
-
                             // snow flake effect for when the cards match.
                             const snowFlakeDiv = $('<div>').addClass('snowFlake');
                             const snowImg = new Image();

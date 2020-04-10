@@ -46,10 +46,13 @@ main {
             height: 20%;
 
             @include mq-768 {
-                line-height: 30px;
                 width: 100%;
                 margin: 0 auto;
                 line-height: calc(30px + (35 - 30) * ((100vw - 320px) / (650 - 320)));
+            }
+
+            @include mq-420 {
+                line-height: 2.7rem;
             }
         }
         
@@ -59,7 +62,7 @@ main {
             height: 10%;
 
              button {
-                 cursor: pointer;
+                cursor: pointer;
                 @include button();
             }
 
@@ -76,6 +79,14 @@ main {
                 button {
                     width: 100%;
                     padding: 5%;
+                }
+            }
+
+            @include mq-420 {
+                height: 34%;
+
+                button {
+                    padding: 6%;
                 }
             }
         }
@@ -104,10 +115,16 @@ main {
                     transform: translate(2.5px, 2.5px);
                     box-shadow: 2.5px 2.5px blue;
                 }
+
+                @include mq-420 {
+                    font-size: 2rem;
+                    width: 45%;
+                }
             }
 
             @include mq-420 {
-                margin-top: 15%;
+                height: 9%;
+                margin-top: 12%;
             }
         }
     }
@@ -275,6 +292,7 @@ main {
             z-index: 2;
             padding: 0;
             width: 100vw;
+            height: 80%;
             text-align: center;
 
             @include mq-420 {
@@ -338,7 +356,12 @@ main {
         position: absolute;
         bottom: 0;
         height: 40vh;
-        width: 35vw;
+        width: 32vw;
+
+        @include mq-1024 {
+            width: 32vw;
+            height: 36vh;
+        }
     }
 
     .minnie {
@@ -346,40 +369,39 @@ main {
         bottom: 0;
         right: 0;
         height: 40vh;
-        width: 35vw;
+        width: 32vw;
+
+        @include mq-1024 {
+            width: 32vw;
+            height: 36vh;
+        }
+
+        @include mq-420 {
+            width: 30vw;
+        }
     }
 
     .alidin {
         position: absolute;
         top: 0;
-        height: 50vh;
-        width: 40vw;
+        height: 48vh;
+        width: 36vw;
         opacity: 0;
         transition: opacity 1s;
+
+        @include mq-1024 {
+            width: 46vw;
+            height: 44vh;
+        }
 
         @include mq-768 {
             height: 45vh;
             width: 50vw;
         }
-    }
 
-    .textMatch {
-        background: rgba(98,162,224,0.5);
-        position: absolute;
-        font-size: 2rem;
-        top: 13%;
-        left: 30%;
-        text-align: center;
-        padding: 10px;
-        opacity: 0;
-        margin: 0;
-        font-weight: 700;
-
-        @include mq-768 {
-            top: 85%;
-            left: 0;
-            width: 100%;
-            text-align: center;
+        @include mq-420 {
+            width: 54vw;
+            height: 41vh;
         }
     }
 
@@ -388,7 +410,7 @@ main {
         top: 0;
         right: 0;
         height: 46vh;
-        width:40vw;
+        width: 30vw;
         opacity: 0;
         transition: opacity 1s;
 
@@ -408,9 +430,19 @@ main {
             z-index: 1;
         }
 
+        @include mq-1024 {
+            width: 46vw;
+            height: 44vh;
+        }
+
         @include mq-768 {
             height: 42vh;
             width: 50vw;
+        }
+
+        @include mq-420 {
+            height: 39vh;
+            width: 52vw;
         }
     }
 }
