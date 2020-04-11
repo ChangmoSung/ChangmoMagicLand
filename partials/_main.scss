@@ -102,8 +102,8 @@ main {
                 font-size: 2.5rem;
                 border: none;
                 border-radius: 50px;
-                box-shadow: 5px 5px 0 blue;
-                transition: all 0.5s;
+                box-shadow: 7px 7px 0 blue;
+                transition: all 0.2s;
                 width: 50%;
                 background: white;
                 z-index: 999;
@@ -112,13 +112,32 @@ main {
                 &:focus,
                 &:active,
                 &:hover {
-                    transform: translate(2.5px, 2.5px);
-                    box-shadow: 2.5px 2.5px blue;
+                    transform: translate(3.5px, 3.5px);
+                    box-shadow: 3.5px 3.5px blue;
+                }
+
+                @include mq-768 {
+                    box-shadow: 6px 6px 0 blue;
+
+                    &:focus,
+                    &:active,
+                    &:hover {
+                        transform: translate(3px, 3px);
+                        box-shadow: 3px 3px blue;
+                    }
                 }
 
                 @include mq-420 {
                     font-size: 2rem;
                     width: 45%;
+                    box-shadow: 5px 5px 0 blue;
+                   
+                    &:focus,
+                    &:active,
+                    &:hover {
+                        transform: translate(2.5px, 2.5px);
+                        box-shadow: 2.5px 2.5px blue;
+                    }
                 }
             }
 
@@ -140,18 +159,21 @@ main {
         
         .clock {
             text-align: center;
-            font-size: 3.3rem;
+            font-size: 3rem;
             justify-content: space-between;
             align-items: center;
-            padding: 0;
             height: 13%;
 
-            @include mq-768 {
+            @include mq-1024 {
                 font-size: 2.5rem;
             }
 
+            @include mq-768 {
+                font-size: 2.1rem;
+            }
+
             @include mq-420 {
-                font-size: 2rem;
+                font-size: 1.85rem;
             }
 
             .count,
@@ -159,12 +181,8 @@ main {
                 margin: 0;
                 background: white;
                 border-radius: 50px;
-                padding: 0.3% 1%;
+                padding: 1rem;
                 position: relative;
-
-                @include mq-1024 {
-                    padding: 5px;
-                }
             }
 
             .extra10Seconds {
@@ -179,12 +197,12 @@ main {
             button {
                 font-family: 'Cabin Sketch', cursive;
                 border: none;
-                font-size: 3.3rem;
+                font-size: 3rem;
                 border-radius: 50px;
-                padding: 0.3% 1%;
+                padding: 1.2rem;
                 box-shadow: 5px 5px 0 blue;
                 background: white;
-                transition: all 0.5s;
+                transition: all 0.2s;
                 cursor: pointer;
 
                 &:focus,
@@ -195,16 +213,24 @@ main {
                 }
 
                 @include mq-1024 {
-                    font-size: 3rem;
-                    padding: 5px;
-                }
-
-                @include mq-768 {
                     font-size: 2.5rem;
                 }
 
+                @include mq-768 {
+                    font-size: 2.1rem;
+                    box-shadow: 4px 4px 0 blue;
+
+                    &:focus,
+                    &:active,
+                    &:hover {
+                        transform: translate(2px, 2px);
+                        box-shadow: 2px 2px blue;
+                    }
+                }
+
                 @include mq-420 {
-                    font-size: 2rem;
+                    padding: 0.8rem;
+                    font-size: 1.75rem;
                 }
             }
 
@@ -290,28 +316,22 @@ main {
             justify-content: center;
             background: rgba(98,162,224,0.5);
             z-index: 2;
-            padding: 0;
             width: 100vw;
             height: 80%;
             text-align: center;
 
-            @include mq-420 {
-                padding: 15px;
-            }
-
             h2 {
                 font-size: 14rem;
-                margin: 45px 0 0;
+                margin: 4.5rem 0 0;
                 z-index: 2;
 
                 @include mq-768 {
-                    font-size: 11rem;
-                    margin-bottom: 0;
+                    font-size: 10rem;
                 }
 
                 @include mq-420 {
                     font-size: 8rem;
-                    margin-top: 5.5rem;
+                    margin-top: 0;
                 }
             }
 
@@ -319,18 +339,27 @@ main {
                 font-size: 4rem;
                 z-index: 2;
                 margin-top: 0;
+                width: 85%;
 
                 @include mq-768 {
-                    font-size: 3.5rem;
+                    font-size: 3rem;
                 }
 
                 @include mq-420 {
-                    font-size: 2.5rem;
+                    font-size: 2.3rem;
                 }
 
                 span {
-                    font-size: 4rem;
+                    font-size: 5.5rem;
                     color: blue;
+
+                    @include mq-768 {
+                        font-size: 5rem;
+                    }
+
+                    @include mq-420 {
+                        font-size: 3.5rem
+                    }
                 }
             }
 
@@ -338,7 +367,7 @@ main {
                 font-family: 'Cabin Sketch', cursive;
                 font-size: 2.5rem;
                 border: none;
-                padding: 12px 5%;
+                padding: 1.2rem 5%;
                 border-radius: 50px;
                 box-shadow: 8px 8px 0 blue;
                 transition: all 0.5s;
@@ -356,7 +385,8 @@ main {
 
                 @include mq-420 {
                     box-shadow: 5px 5px 0 blue;
-                    font-size: 2.1rem;
+                    font-size: 2rem;
+                    margin-bottom: 0;
 
                     &:focus,
                     &:active,
