@@ -577,6 +577,7 @@ main .gameBoard .result h2 {
 @media (max-width: 420px) {
   main .gameBoard .result h2 {
     font-size: 8rem;
+    margin-top: 5.5rem;
   }
 }
 main .gameBoard .result p {
@@ -584,13 +585,18 @@ main .gameBoard .result p {
   z-index: 2;
   margin-top: 0;
 }
+@media (max-width: 768px) {
+  main .gameBoard .result p {
+    font-size: 3.5rem;
+  }
+}
 @media (max-width: 420px) {
   main .gameBoard .result p {
     font-size: 2.5rem;
   }
 }
 main .gameBoard .result p span {
-  font-size: 5rem;
+  font-size: 4rem;
   color: blue;
 }
 main .gameBoard .result .playAgain {
@@ -609,6 +615,16 @@ main .gameBoard .result .playAgain {
 main .gameBoard .result .playAgain:focus, main .gameBoard .result .playAgain:active, main .gameBoard .result .playAgain:hover {
   transform: translate(4px, 4px);
   box-shadow: 4px 4px blue;
+}
+@media (max-width: 420px) {
+  main .gameBoard .result .playAgain {
+    box-shadow: 5px 5px 0 blue;
+    font-size: 2.1rem;
+  }
+  main .gameBoard .result .playAgain:focus, main .gameBoard .result .playAgain:active, main .gameBoard .result .playAgain:hover {
+    transform: translate(2.5px, 2.5px);
+    box-shadow: 2.5px 2.5px blue;
+  }
 }
 main .mickey {
   position: absolute;
