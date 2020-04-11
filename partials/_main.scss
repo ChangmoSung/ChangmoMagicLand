@@ -330,7 +330,7 @@ main {
                 }
 
                 @include mq-420 {
-                    font-size: 8rem;
+                    font-size: 7.5rem;
                     margin-top: 0;
                 }
             }
@@ -387,6 +387,7 @@ main {
                     box-shadow: 5px 5px 0 blue;
                     font-size: 2rem;
                     margin-bottom: 0;
+                    padding: 1rem 3.5rem;
 
                     &:focus,
                     &:active,
