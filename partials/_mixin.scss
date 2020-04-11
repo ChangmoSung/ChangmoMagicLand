@@ -7,7 +7,8 @@
     transition: all 0.2s;
     background: white;
     z-index: 999;
-    width: 20%;
+    width: 15rem;
+    cursor: pointer;
 
     &:focus,
     &:active,
@@ -16,7 +17,12 @@
         box-shadow: 3.5px 3.5px blue;
     }
 
+    @include mq-1024 {
+        width: 14rem;
+    }
+
     @include mq-768 {
+        font-size: 2.3rem;
         box-shadow: 6px 6px 0 blue;
 
         &:focus,
@@ -52,8 +58,20 @@
     }
 }
 
+@mixin mq-560 {
+    @media(max-width: 560px) {
+        @content;
+    }
+}
+
 @mixin mq-420 {
     @media(max-width: 420px) {
+        @content;
+    }
+}
+
+@mixin mq-375 {
+    @media(max-width: 375px) {
         @content;
     }
 }

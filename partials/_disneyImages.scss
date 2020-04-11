@@ -1,0 +1,154 @@
+.mickey,
+.minnie,
+.alidin,
+.elsa {
+    position: absolute;
+}
+
+.mickey,
+.minnie {
+    bottom: 0;
+    height: 40vh;
+    width: 32vw;
+
+    @include mq-1024 {
+        width: 32vw;
+        height: 36vh;
+    }
+
+      @include mq-560 {
+        height: 38vh;
+    }
+}
+
+.minnie {
+    right: 0;
+
+    @include mq-420 {
+        width: 30vw;
+    }
+}
+
+.alidin,
+.elsa {
+    top: 0;
+    height: 48vh;
+    width: 36vw;
+    opacity: 0;
+    transition: opacity 1s;
+
+    @include mq-1024 {
+        width: 46vw;
+        height: 44vh;
+    }
+
+    @include mq-768 {
+        height: 45vh;
+        width: 50vw;
+    }
+
+    @include mq-420 {
+        width: 54vw;
+        height: 41vh;
+    }
+}
+
+.elsa {
+    right: 0;
+    height: 46vh;
+    width: 30vw;
+
+    .snowFlake {
+        position: absolute;
+        width: 20%;
+        height: 13%;
+        animation: firstSnowFlake 2s ease 1;
+        z-index: 1;
+    }
+
+    .snowFlake:nth-child(even) {
+        animation: secondSnowFlake 2.5s ease 1;
+    }
+
+    @include mq-1024 {
+        width: 46vw;
+        height: 44vh;
+    }
+
+    @include mq-768 {
+        height: 42vh;
+        width: 50vw;
+    }
+
+    @include mq-420 {
+        height: 39vh;
+        width: 52vw;
+    }
+}
+
+@keyframes firstSnowFlake {
+    0% {
+        top: 35%;
+        left: 0;
+    }
+
+    20% {
+        top: 30%;
+        left: -10%;
+    }
+
+    40% {
+        left: -5%;
+    }
+
+    60% {
+        left: -10%
+    }
+
+    70% {
+        left: -5%;
+    }
+
+    80% {
+        left: -15%;
+    }
+
+    100% {
+        top: 0;
+        left: -10%;
+    }
+}
+
+
+@keyframes secondSnowFlake {
+    0% {
+        top: 35%;
+        left: 0;
+    }
+
+    20% {
+        top: 30%;
+        left: 10%;
+    }
+
+    40% {
+        left: 20%;
+    }
+
+    60% {
+        left: 15%
+    }
+
+    70% {
+        left: 20%;
+    }
+
+    80% {
+        left: 10%;
+    }
+
+    100% {
+        top: 5%;
+        left: 20%;
+    }
+}

@@ -232,6 +232,7 @@ html {
 
 html {
   font-size: 62.5%;
+  font-family: "Cabin Sketch", cursive;
 }
 html .wrapper {
   max-width: 800px;
@@ -259,23 +260,41 @@ html img {
 }
 
 main {
-  font-family: "Cabin Sketch", cursive;
   height: 100vh;
   background-image: url(../assets/background.jpeg);
-  background-size: 100% 100%;
+  background-size: cover;
 }
 main .title {
   text-align: center;
-  font-size: calc(50px + (110 - 50) * ((100vw - 320px) / (1680 - 320)));
+  font-size: calc(80px + (110 - 80) * ((100vw - 1024px) / (1680 - 1024)));
+  padding-top: 6rem;
   margin: 0;
-  padding-top: calc(15px + (60 - 15) * ((100vw - 320px) / (1680 - 320)));
   transition: all 1s;
   height: 20%;
   color: blue;
 }
 @media (max-width: 768px) {
   main .title {
+    width: 80%;
     height: 15%;
+    padding-top: 3.5rem;
+    margin: 0 auto;
+    font-size: 6.5rem;
+  }
+}
+@media (max-width: 560px) {
+  main .title {
+    font-size: 6rem;
+  }
+}
+@media (max-width: 420px) {
+  main .title {
+    font-size: 5rem;
+  }
+}
+@media (max-width: 375px) {
+  main .title {
+    font-size: 4.5rem;
   }
 }
 main .description {
@@ -283,39 +302,80 @@ main .description {
   height: 80%;
 }
 main .description h2 {
-  font-size: calc(35px + (65 - 35) * ((100vw - 320px) / (1680 - 320)));
+  font-size: 6.5rem;
   text-align: center;
   margin: 0;
   height: 20%;
-  padding-top: 5%;
+  padding-top: 8%;
+}
+@media (max-width: 1024px) {
+  main .description h2 {
+    font-size: 5rem;
+  }
 }
 @media (max-width: 768px) {
   main .description h2 {
-    padding-top: 12%;
+    padding-top: 9rem;
+    font-size: 4.5rem;
+  }
+}
+@media (max-width: 560px) {
+  main .description h2 {
+    font-size: 4rem;
+    padding-top: 8.5rem;
   }
 }
 @media (max-width: 420px) {
   main .description h2 {
-    padding-top: 17%;
+    font-size: 3.5rem;
+    padding-top: 7rem;
+  }
+}
+@media (max-width: 375px) {
+  main .description h2 {
+    font-size: 3rem;
   }
 }
 main .description p {
-  font-size: calc(16px + (25 - 16) * ((100vw - 320px) / (1680 - 320)));
-  line-height: 35px;
+  font-size: 2.5rem;
+  line-height: 4rem;
   text-align: center;
   width: 100%;
   height: 20%;
 }
+@media (max-width: 1024px) {
+  main .description p {
+    font-size: 2.1rem;
+    line-height: 3.6rem;
+  }
+}
 @media (max-width: 768px) {
   main .description p {
     width: 100%;
-    margin: 0 auto;
-    line-height: calc(30px + (35 - 30) * ((100vw - 320px) / (650 - 320)));
+    font-size: 2rem;
+    line-height: 3.3rem;
+    margin: 1.5rem auto 0;
+    padding-top: 2rem;
+  }
+}
+@media (max-width: 560px) {
+  main .description p {
+    font-size: 1.8rem;
+    line-height: 2.9rem;
+    padding-top: 1rem;
   }
 }
 @media (max-width: 420px) {
   main .description p {
+    padding-top: 0;
+    font-size: 1.7rem;
     line-height: 2.7rem;
+  }
+}
+@media (max-width: 375px) {
+  main .description p {
+    font-size: 1.55rem;
+    line-height: 2.55rem;
   }
 }
 main .description .levelContainer {
@@ -324,7 +384,6 @@ main .description .levelContainer {
   height: 10%;
 }
 main .description .levelContainer button {
-  cursor: pointer;
   font-family: "Cabin Sketch", cursive;
   font-size: 2.5rem;
   border: none;
@@ -333,14 +392,21 @@ main .description .levelContainer button {
   transition: all 0.2s;
   background: white;
   z-index: 999;
-  width: 20%;
+  width: 15rem;
+  cursor: pointer;
 }
 main .description .levelContainer button:focus, main .description .levelContainer button:active, main .description .levelContainer button:hover {
   transform: translate(3.5px, 3.5px);
   box-shadow: 3.5px 3.5px blue;
 }
+@media (max-width: 1024px) {
+  main .description .levelContainer button {
+    width: 14rem;
+  }
+}
 @media (max-width: 768px) {
   main .description .levelContainer button {
+    font-size: 2.3rem;
     box-shadow: 6px 6px 0 blue;
   }
   main .description .levelContainer button:focus, main .description .levelContainer button:active, main .description .levelContainer button:hover {
@@ -366,21 +432,28 @@ main .description .levelContainer button:focus, main .description .levelContaine
 @media (max-width: 768px) {
   main .description .levelContainer {
     flex-direction: column;
-    width: 35%;
-    margin: 0 auto;
-    height: 30%;
+    width: 14rem;
+    margin: 1rem auto 0;
+    height: 34%;
   }
   main .description .levelContainer button {
     width: 100%;
-    padding: 5%;
+    padding: 1rem;
   }
 }
 @media (max-width: 420px) {
   main .description .levelContainer {
-    height: 34%;
+    margin: 0 auto;
+    width: 13rem;
   }
   main .description .levelContainer button {
     padding: 6%;
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 375px) {
+  main .description .levelContainer {
+    width: 11rem;
   }
 }
 main .description .gameStart {
@@ -389,6 +462,11 @@ main .description .gameStart {
   height: 10%;
   margin-top: 10%;
 }
+@media (max-width: 768px) {
+  main .description .gameStart {
+    height: 8.5%;
+  }
+}
 main .description .gameStart button {
   font-family: "Cabin Sketch", cursive;
   font-size: 2.5rem;
@@ -396,17 +474,24 @@ main .description .gameStart button {
   border-radius: 50px;
   box-shadow: 7px 7px 0 blue;
   transition: all 0.2s;
-  width: 50%;
   background: white;
   z-index: 999;
+  width: 15rem;
   cursor: pointer;
+  width: 50%;
 }
 main .description .gameStart button:focus, main .description .gameStart button:active, main .description .gameStart button:hover {
   transform: translate(3.5px, 3.5px);
   box-shadow: 3.5px 3.5px blue;
 }
+@media (max-width: 1024px) {
+  main .description .gameStart button {
+    width: 14rem;
+  }
+}
 @media (max-width: 768px) {
   main .description .gameStart button {
+    font-size: 2.3rem;
     box-shadow: 6px 6px 0 blue;
   }
   main .description .gameStart button:focus, main .description .gameStart button:active, main .description .gameStart button:hover {
@@ -417,7 +502,6 @@ main .description .gameStart button:focus, main .description .gameStart button:a
 @media (max-width: 420px) {
   main .description .gameStart button {
     font-size: 2rem;
-    width: 45%;
     box-shadow: 5px 5px 0 blue;
   }
   main .description .gameStart button:focus, main .description .gameStart button:active, main .description .gameStart button:hover {
@@ -425,23 +509,38 @@ main .description .gameStart button:focus, main .description .gameStart button:a
     box-shadow: 2.5px 2.5px blue;
   }
 }
-@media (max-width: 420px) {
-  main .description .gameStart {
-    height: 9%;
-    margin-top: 12%;
+@media (max-width: 1024px) {
+  main .description .gameStart button {
+    width: 45%;
   }
 }
-main .gameBoard {
+@media (max-width: 560px) {
+  main .description .gameStart button {
+    width: 18rem;
+  }
+}
+@media (max-width: 420px) {
+  main .description .gameStart button {
+    width: 16rem;
+  }
+}
+@media (max-width: 375px) {
+  main .description .gameStart button {
+    width: 14rem;
+  }
+}
+
+.gameBoard {
   height: 80%;
   position: relative;
   display: none;
 }
 @media (max-width: 768px) {
-  main .gameBoard {
+  .gameBoard {
     padding-top: 5%;
   }
 }
-main .gameBoard .clock {
+.gameBoard .clock {
   text-align: center;
   font-size: 3rem;
   justify-content: space-between;
@@ -449,29 +548,35 @@ main .gameBoard .clock {
   height: 13%;
 }
 @media (max-width: 1024px) {
-  main .gameBoard .clock {
+  .gameBoard .clock {
     font-size: 2.5rem;
   }
 }
 @media (max-width: 768px) {
-  main .gameBoard .clock {
+  .gameBoard .clock {
     font-size: 2.1rem;
   }
 }
 @media (max-width: 420px) {
-  main .gameBoard .clock {
+  .gameBoard .clock {
     font-size: 1.85rem;
   }
 }
-main .gameBoard .clock .count,
-main .gameBoard .clock .timer {
+.gameBoard .clock .count,
+.gameBoard .clock .timer {
   margin: 0;
   background: white;
   border-radius: 50px;
   padding: 1rem;
   position: relative;
 }
-main .gameBoard .clock .extra10Seconds {
+@media (max-width: 420px) {
+  .gameBoard .clock .count,
+.gameBoard .clock .timer {
+    padding: 0.8rem;
+  }
+}
+.gameBoard .clock .extra10Seconds {
   position: absolute;
   top: 0;
   left: 20vw;
@@ -479,7 +584,7 @@ main .gameBoard .clock .extra10Seconds {
   padding: 0.3% 1%;
   border-radius: 50px;
 }
-main .gameBoard .clock button {
+.gameBoard .clock button {
   font-family: "Cabin Sketch", cursive;
   border: none;
   font-size: 3rem;
@@ -490,35 +595,35 @@ main .gameBoard .clock button {
   transition: all 0.2s;
   cursor: pointer;
 }
-main .gameBoard .clock button:focus, main .gameBoard .clock button:active, main .gameBoard .clock button:hover {
+.gameBoard .clock button:focus, .gameBoard .clock button:active, .gameBoard .clock button:hover {
   transform: translate(2.5px, 2.5px);
   box-shadow: 2.5px 2.5px blue;
 }
 @media (max-width: 1024px) {
-  main .gameBoard .clock button {
+  .gameBoard .clock button {
     font-size: 2.5rem;
   }
 }
 @media (max-width: 768px) {
-  main .gameBoard .clock button {
+  .gameBoard .clock button {
     font-size: 2.1rem;
     box-shadow: 4px 4px 0 blue;
   }
-  main .gameBoard .clock button:focus, main .gameBoard .clock button:active, main .gameBoard .clock button:hover {
+  .gameBoard .clock button:focus, .gameBoard .clock button:active, .gameBoard .clock button:hover {
     transform: translate(2px, 2px);
     box-shadow: 2px 2px blue;
   }
 }
 @media (max-width: 420px) {
-  main .gameBoard .clock button {
+  .gameBoard .clock button {
     padding: 0.8rem;
     font-size: 1.75rem;
   }
 }
-main .gameBoard .clock .bonusTime {
+.gameBoard .clock .bonusTime {
   opacity: 0;
 }
-main .gameBoard .container {
+.gameBoard .container {
   flex-wrap: wrap;
   height: 67%;
   justify-content: space-between;
@@ -527,7 +632,7 @@ main .gameBoard .container {
   padding: 1.5%;
   background: rgba(98, 162, 224, 0.5);
 }
-main .gameBoard .container .card {
+.gameBoard .container .card {
   position: relative;
   perspective: 700px;
   width: 21%;
@@ -538,46 +643,41 @@ main .gameBoard .container .card {
   transition: all 0.5s;
   cursor: pointer;
 }
-main .gameBoard .container .card.matched {
+.gameBoard .container .card.matched {
   transform: scale(0.5);
   opacity: 0.7;
   border-radius: 50px;
 }
-main .gameBoard .container .card.flipped .front {
+.gameBoard .container .card.flipped .front {
   transform: rotateY(0deg);
 }
-main .gameBoard .container .card.flipped .back {
+.gameBoard .container .card.flipped .back {
   transform: rotateY(180deg);
 }
-main .gameBoard .container .card.level2, main .gameBoard .container .card.level3 {
+.gameBoard .container .card.level2, .gameBoard .container .card.level3 {
   width: 17%;
   height: 21%;
 }
-main .gameBoard .container .card .front {
+.gameBoard .container .card .front,
+.gameBoard .container .card .back {
   position: absolute;
   top: 0;
   left: 0;
+  transition: all 0.5s;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background-color: rgba(98, 162, 224, 0.01);
+}
+.gameBoard .container .card .front {
   transform: rotateY(-180deg);
-  transition: all 0.5s;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  background-color: rgba(98, 162, 224, 0.01);
 }
-main .gameBoard .container .card .back {
-  position: absolute;
-  top: 0;
-  left: 0;
-  transition: all 0.5s;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  background-color: rgba(98, 162, 224, 0.01);
-}
-main .gameBoard .container .card .matchAnimation {
+.gameBoard .container .card .matchAnimation {
   width: 30px;
   height: 30px;
   position: absolute;
 }
-main .gameBoard .result {
+
+.result {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -588,53 +688,53 @@ main .gameBoard .result {
   height: 80%;
   text-align: center;
 }
-main .gameBoard .result h2 {
+.result h2 {
   font-size: 14rem;
   margin: 4.5rem 0 0;
   z-index: 2;
 }
 @media (max-width: 768px) {
-  main .gameBoard .result h2 {
+  .result h2 {
     font-size: 10rem;
   }
 }
 @media (max-width: 420px) {
-  main .gameBoard .result h2 {
+  .result h2 {
     font-size: 7.5rem;
     margin-top: 0;
   }
 }
-main .gameBoard .result p {
+.result p {
   font-size: 4rem;
   z-index: 2;
   margin-top: 0;
   width: 85%;
 }
 @media (max-width: 768px) {
-  main .gameBoard .result p {
+  .result p {
     font-size: 3rem;
   }
 }
 @media (max-width: 420px) {
-  main .gameBoard .result p {
+  .result p {
     font-size: 2.3rem;
   }
 }
-main .gameBoard .result p span {
+.result p span {
   font-size: 5.5rem;
   color: blue;
 }
 @media (max-width: 768px) {
-  main .gameBoard .result p span {
+  .result p span {
     font-size: 5rem;
   }
 }
 @media (max-width: 420px) {
-  main .gameBoard .result p span {
+  .result p span {
     font-size: 3.5rem;
   }
 }
-main .gameBoard .result .playAgain {
+.result .playAgain {
   font-family: "Cabin Sketch", cursive;
   font-size: 2.5rem;
   border: none;
@@ -647,54 +747,61 @@ main .gameBoard .result .playAgain {
   z-index: 999;
   cursor: pointer;
 }
-main .gameBoard .result .playAgain:focus, main .gameBoard .result .playAgain:active, main .gameBoard .result .playAgain:hover {
+.result .playAgain:focus, .result .playAgain:active, .result .playAgain:hover {
   transform: translate(4px, 4px);
   box-shadow: 4px 4px blue;
 }
 @media (max-width: 420px) {
-  main .gameBoard .result .playAgain {
+  .result .playAgain {
     box-shadow: 5px 5px 0 blue;
     font-size: 2rem;
     margin-bottom: 0;
     padding: 1rem 3.5rem;
   }
-  main .gameBoard .result .playAgain:focus, main .gameBoard .result .playAgain:active, main .gameBoard .result .playAgain:hover {
+  .result .playAgain:focus, .result .playAgain:active, .result .playAgain:hover {
     transform: translate(2.5px, 2.5px);
     box-shadow: 2.5px 2.5px blue;
   }
 }
-main .mickey {
+
+.mickey,
+.minnie,
+.alidin,
+.elsa {
   position: absolute;
+}
+
+.mickey,
+.minnie {
   bottom: 0;
   height: 40vh;
   width: 32vw;
 }
 @media (max-width: 1024px) {
-  main .mickey {
+  .mickey,
+.minnie {
     width: 32vw;
     height: 36vh;
   }
 }
-main .minnie {
-  position: absolute;
-  bottom: 0;
+@media (max-width: 560px) {
+  .mickey,
+.minnie {
+    height: 38vh;
+  }
+}
+
+.minnie {
   right: 0;
-  height: 40vh;
-  width: 32vw;
-}
-@media (max-width: 1024px) {
-  main .minnie {
-    width: 32vw;
-    height: 36vh;
-  }
 }
 @media (max-width: 420px) {
-  main .minnie {
+  .minnie {
     width: 30vw;
   }
 }
-main .alidin {
-  position: absolute;
+
+.alidin,
+.elsa {
   top: 0;
   height: 48vh;
   width: 36vw;
@@ -702,60 +809,56 @@ main .alidin {
   transition: opacity 1s;
 }
 @media (max-width: 1024px) {
-  main .alidin {
+  .alidin,
+.elsa {
     width: 46vw;
     height: 44vh;
   }
 }
 @media (max-width: 768px) {
-  main .alidin {
+  .alidin,
+.elsa {
     height: 45vh;
     width: 50vw;
   }
 }
 @media (max-width: 420px) {
-  main .alidin {
+  .alidin,
+.elsa {
     width: 54vw;
     height: 41vh;
   }
 }
-main .elsa {
-  position: absolute;
-  top: 0;
+
+.elsa {
   right: 0;
   height: 46vh;
   width: 30vw;
-  opacity: 0;
-  transition: opacity 1s;
 }
-main .elsa .snowFlake:nth-child(odd) {
+.elsa .snowFlake {
   position: absolute;
   width: 20%;
   height: 13%;
   animation: firstSnowFlake 2s ease 1;
   z-index: 1;
 }
-main .elsa .snowFlake:nth-child(even) {
-  position: absolute;
-  width: 20%;
-  height: 13%;
+.elsa .snowFlake:nth-child(even) {
   animation: secondSnowFlake 2.5s ease 1;
-  z-index: 1;
 }
 @media (max-width: 1024px) {
-  main .elsa {
+  .elsa {
     width: 46vw;
     height: 44vh;
   }
 }
 @media (max-width: 768px) {
-  main .elsa {
+  .elsa {
     height: 42vh;
     width: 50vw;
   }
 }
 @media (max-width: 420px) {
-  main .elsa {
+  .elsa {
     height: 39vh;
     width: 52vw;
   }
