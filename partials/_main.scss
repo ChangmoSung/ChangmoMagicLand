@@ -136,7 +136,7 @@ main {
                 width: 13rem;
 
                 button {
-                    padding: 6%;
+                    padding: 7%;
                     font-size: 1.8rem;
                 }
             }
@@ -158,7 +158,7 @@ main {
 
             button {
                 @include button;
-                width: 50%;
+                    width: 50%;
 
                 @include mq-1024 {
                     width: 45%;

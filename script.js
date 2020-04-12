@@ -1,5 +1,6 @@
 const memoryGame = {};
 
+// I'm using let here because the value of this array changes based on the level that users selected
 let cards = [
     {
         url: "assets/kungfupanda.png",
@@ -122,19 +123,15 @@ memoryGame.checkCards = function() {
     let userFlippedCard = false;
     let gameOver = false;
     let numberOfMatches = 0;
-
-    $('.resetButton').on('click', () => {
-        location.reload();
-    });
-
+    
   
-    // This is for timer and count and to count the number of matches. The timer won't start until users click on a card that's why I use .one
-    // Once users click on a card, the time goes down by 1 every second.
+    // This is for timer and counter. The timer won't start until users click on a card and it only runs once. That's why I use .one
     $gameBoardContainer.one('click', () => {
         const $bonusTime = $('.bonusTime').css('pointer-events', 'none')
                                           .prop('disabled', true);
 
         const timeChecker = () => {
+            // Once users click on a card, the time goes down by 1 every second.
             memoryGame.timer--;
 
             $timer.text(`TIME: ${memoryGame.timer}`);
@@ -159,14 +156,14 @@ memoryGame.checkCards = function() {
                     const resultDescription = `
                         <div class="result">
                             <h2>RESULT</h2>
-                            <p>You tried <span>${count}</span> times and brought <span>${numberOfMatches}</span> friends back home!!</p>
+                            <p>You tried <span>${count}</span> times and brought <span>${numberOfMatches === memoryGame.targettedMatches ? 'ALL' : numberOfMatches}</span> friends back home!!</p>
                             <button class="playAgain">PLAY AGAIN</button>
                         </div>
                     `;
 
                     $gameBoard.append(resultDescription);
 
-                    // to play again.
+                    // To reset the whole game
                     $('.playAgain').on('click', () => {
                         location.reload();
                     });
@@ -215,7 +212,7 @@ memoryGame.checkCards = function() {
             };
 
 
-            // here's where I check if the two cards that users selected match or not. If both of the cards have the same id AND if the userFlippedCard variable is false, check if the cards match. userFlippedCard has to be false for the purpose of the game because every time users click on a card, the value of the variable changes back and forth between true and false and it's set to false on load.
+            // here's where I check if the two cards that users clicked match or not. If both of the cards have the same id AND if the userFlippedCard variable is false, check if the cards match. userFlippedCard has to be false for the purpose of the game because every time users click on a card, the value of the variable changes back and forth between true and false and it's set to false on load.
             if (firstPick.attr('id') === secondPick.attr('id') && !userFlippedCard) {
                 numberOfMatches++;
 
@@ -233,27 +230,28 @@ memoryGame.checkCards = function() {
                 firstPick = '';
                 secondPick = '';
 
+                
+                // I'm using .hasClass so every card that has a class of matched get unclickable
                 if ($('.card').hasClass('matched')) {
                     $('.matched').css('pointer-events', 'none')
                                  .prop('disabled', true);
 
                     cards.filter(card => {
                         if(card.id === $(this).attr('id')) {
-                            // snow flake effect for when the cards match.
-                            const snowFlakeDiv = $('<div>').addClass('snowFlake');
+                            // snowflake effect for when the cards match.
                             const snowImg = new Image();
-                            snowFlakeDiv.append(snowImg);
+                            const snowFlakeDiv = $('<div>').addClass('snowFlake');
+
                             snowImg.src = 'assets/snowFlake.png';
+                            snowFlakeDiv.append(snowImg);
+
                             $('.elsa').append(snowFlakeDiv);
 
+                            snowFlakeDiv.delay(1500).fadeOut('fast');
 
                             //audio sound for when the cards match.
                             const matchAudio = new Audio(`${card.audio}`);
                             matchAudio.play();
-
-
-                            // the snow flake effect fades out after 1.5 seconds.
-                            snowFlakeDiv.delay(1500).fadeOut('fast');
                         }
                     })
 
@@ -262,6 +260,7 @@ memoryGame.checkCards = function() {
                 }
 
             } else {
+                // If the cards that users clicked on don't match, they get clickable again
                 setTimeout(() => {
                     firstPick.removeClass('flipped')
                              .css('pointer-events', 'auto')
@@ -278,6 +277,11 @@ memoryGame.checkCards = function() {
                 }, 500);
             };
         };
+    });
+
+    // To reset the whole game
+    $('.resetButton').on('click', () => {
+        location.reload();
     });
 };
 
@@ -329,6 +333,7 @@ const $gameStartButton = $('.gameStart button');
 const $timer = $('.timer');
 const $count = $('.count');
 const $gameBoard = $('.gameBoard');
+// These variables above need to be used in other functions so I put them in the global scope
 
 memoryGame.prepareToStart = function() {
     const $descriptionContainer = $('.description');
@@ -378,6 +383,7 @@ memoryGame.init = function() {
         $level3.css('pointer-events', 'none')
                .prop('disabled', true);
 
+        // The value of timer and the number of cards and targetted matches are set based on the level that users selected
         if (memoryGame.levelSelected) {
             const numberOfCards = $(this).attr('data-cardNumber');
             const numberOfSlicedCards = cards.slice(0, numberOfCards);
@@ -391,7 +397,6 @@ memoryGame.init = function() {
                 memoryGame.levelSelected = 3;
                 
                 $level1.css('opacity', '0');
-
                 $level2.css('opacity', '0');
 
             } else if (memoryGame.timer === '60' && cards.length === 20) {
@@ -399,7 +404,6 @@ memoryGame.init = function() {
                 memoryGame.levelSelected = 2;
 
                 $level1.css('opacity', '0');
-
                 $level3.css('opacity', '0');
 
             } else {
@@ -407,7 +411,6 @@ memoryGame.init = function() {
                 memoryGame.levelSelected = 1;
 
                 $level2.css('opacity', '0');
-
                 $level3.css('opacity', '0');
             }
 

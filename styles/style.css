@@ -447,7 +447,7 @@ main .description .levelContainer button:focus, main .description .levelContaine
     width: 13rem;
   }
   main .description .levelContainer button {
-    padding: 6%;
+    padding: 7%;
     font-size: 1.8rem;
   }
 }
