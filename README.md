@@ -10,3 +10,5 @@ Changmo's Magic Land is a memory game where users click on each card to match an
 * Users can receive bonus time (10 seconds)
 * Users can reset the game
 * Users can see the total number of attempts and matches at the end of the game
+
+![](https://github.com/ChangmoSung/ChangmoMagicLand/blob/master/assets/magicLand.jpeg)
