@@ -8,6 +8,7 @@
     }
     
     .clock {
+        position: relative;
         text-align: center;
         font-size: 3rem;
         justify-content: space-between;
@@ -41,11 +42,23 @@
 
         .extra10Seconds {
             position: absolute;
-            top: 0;
-            left: 20vw;
+            top: -5rem;
+            left: 0;
             background: white;
             padding: 0.3% 1%;
-            border-radius: 50px;
+            border-radius: 5rem;
+
+            @include mq-1024 {
+                top: -3rem;
+            }
+
+            @include mq-768 {
+                top: -2.5rem;
+            }
+
+            @include mq-420 {
+                top: -1.7rem;
+            }
         }
 
         button {

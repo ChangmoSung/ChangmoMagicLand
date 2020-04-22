@@ -541,6 +541,7 @@ main .description .gameStart button:focus, main .description .gameStart button:a
   }
 }
 .gameBoard .clock {
+  position: relative;
   text-align: center;
   font-size: 3rem;
   justify-content: space-between;
@@ -578,11 +579,26 @@ main .description .gameStart button:focus, main .description .gameStart button:a
 }
 .gameBoard .clock .extra10Seconds {
   position: absolute;
-  top: 0;
-  left: 20vw;
+  top: -5rem;
+  left: 0;
   background: white;
   padding: 0.3% 1%;
-  border-radius: 50px;
+  border-radius: 5rem;
+}
+@media (max-width: 1024px) {
+  .gameBoard .clock .extra10Seconds {
+    top: -3rem;
+  }
+}
+@media (max-width: 768px) {
+  .gameBoard .clock .extra10Seconds {
+    top: -2.5rem;
+  }
+}
+@media (max-width: 420px) {
+  .gameBoard .clock .extra10Seconds {
+    top: -1.7rem;
+  }
 }
 .gameBoard .clock button {
   font-family: "Cabin Sketch", cursive;

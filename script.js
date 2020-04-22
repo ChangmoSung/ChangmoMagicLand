@@ -184,7 +184,7 @@ memoryGame.checkCards = function() {
             $('.clock').append($extra10Seconds);
             setTimeout(() => {
                 $('.extra10Seconds').fadeOut();
-            }, 2000);
+            }, 4000);
 
             memoryGame.timer += 10;
         });
