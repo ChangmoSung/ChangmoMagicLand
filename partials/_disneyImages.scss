@@ -32,8 +32,8 @@
 .alidin,
 .elsa {
     top: 0;
-    height: 48vh;
-    width: 36vw;
+    height: 46vh;
+    width: 32.5vw;
     opacity: 0;
     transition: opacity 1s;
 
@@ -43,7 +43,7 @@
     }
 
     @include mq-768 {
-        height: 45vh;
+        height: 42vh;
         width: 50vw;
     }
 
@@ -56,7 +56,7 @@
 .elsa {
     right: 0;
     height: 46vh;
-    width: 30vw;
+    width: 29vw;
 
     .snowFlake {
         position: absolute;
@@ -76,7 +76,7 @@
     }
 
     @include mq-768 {
-        height: 42vh;
+        height: 41vh;
         width: 50vw;
     }
 

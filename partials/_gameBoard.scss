@@ -95,23 +95,31 @@
 
     .container {
         flex-wrap: wrap;
-        height: 67%;
+        height: 72%;
         justify-content: space-between;
-        align-items: space-between;
+        align-items: center;
         display: none;
-        padding: 1.5%;
+        padding: 1%;
         background: rgba(98,162,224,0.5);
 
         .card {
             position: relative;
             perspective: 700px;
-            width: 21%;
-            height: 21%;
+            width: 20.1%;
+            height: 22.5%;
             z-index: 999;
             background: none;
             border: none;
             transition: all 0.5s;
             cursor: pointer;
+
+            @include mq-768 {
+                width: 22.5%;
+            }
+
+            @include mq-420 {
+                width: 23.5%;
+            }
 
             &.matched {
                 transform: scale(0.5);
@@ -132,6 +140,10 @@
             &.level3 {
                 width: 17%;
                 height: 21%;
+
+                @include mq-560 {
+                    width: 18.5%;
+                }
             }
 
             .front,

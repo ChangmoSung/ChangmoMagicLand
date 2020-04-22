@@ -625,23 +625,33 @@ main .description .gameStart button:focus, main .description .gameStart button:a
 }
 .gameBoard .container {
   flex-wrap: wrap;
-  height: 67%;
+  height: 72%;
   justify-content: space-between;
-  align-items: space-between;
+  align-items: center;
   display: none;
-  padding: 1.5%;
+  padding: 1%;
   background: rgba(98, 162, 224, 0.5);
 }
 .gameBoard .container .card {
   position: relative;
   perspective: 700px;
-  width: 21%;
-  height: 21%;
+  width: 20.1%;
+  height: 22.5%;
   z-index: 999;
   background: none;
   border: none;
   transition: all 0.5s;
   cursor: pointer;
+}
+@media (max-width: 768px) {
+  .gameBoard .container .card {
+    width: 22.5%;
+  }
+}
+@media (max-width: 420px) {
+  .gameBoard .container .card {
+    width: 23.5%;
+  }
 }
 .gameBoard .container .card.matched {
   transform: scale(0.5);
@@ -657,6 +667,11 @@ main .description .gameStart button:focus, main .description .gameStart button:a
 .gameBoard .container .card.level2, .gameBoard .container .card.level3 {
   width: 17%;
   height: 21%;
+}
+@media (max-width: 560px) {
+  .gameBoard .container .card.level2, .gameBoard .container .card.level3 {
+    width: 18.5%;
+  }
 }
 .gameBoard .container .card .front,
 .gameBoard .container .card .back {
@@ -803,8 +818,8 @@ main .description .gameStart button:focus, main .description .gameStart button:a
 .alidin,
 .elsa {
   top: 0;
-  height: 48vh;
-  width: 36vw;
+  height: 46vh;
+  width: 32.5vw;
   opacity: 0;
   transition: opacity 1s;
 }
@@ -818,7 +833,7 @@ main .description .gameStart button:focus, main .description .gameStart button:a
 @media (max-width: 768px) {
   .alidin,
 .elsa {
-    height: 45vh;
+    height: 42vh;
     width: 50vw;
   }
 }
@@ -833,7 +848,7 @@ main .description .gameStart button:focus, main .description .gameStart button:a
 .elsa {
   right: 0;
   height: 46vh;
-  width: 30vw;
+  width: 29vw;
 }
 .elsa .snowFlake {
   position: absolute;
@@ -853,7 +868,7 @@ main .description .gameStart button:focus, main .description .gameStart button:a
 }
 @media (max-width: 768px) {
   .elsa {
-    height: 42vh;
+    height: 41vh;
     width: 50vw;
   }
 }
